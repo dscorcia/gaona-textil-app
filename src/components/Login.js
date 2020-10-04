@@ -6,7 +6,7 @@ export const Login = () => {
         <div id="formContent">
            
           <div className="fadeIn first">
-            <img src="./logoGaona.jpg" id="icon" alt="Logo Gaona Textil" />
+            <img src="src/logoGaona.jpg" id="icon" alt="Logo Gaona Textil" />
           </div>
       
           <form>
