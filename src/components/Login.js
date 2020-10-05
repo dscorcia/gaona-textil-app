@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import logo from '../assets/images/logoGaona.jpg';
 
 export const Login = () => {
     return (
@@ -6,7 +7,7 @@ export const Login = () => {
         <div id="formContent">
            
           <div className="fadeIn first">
-            <img src="../public/logoGaona.jpg" id="icon" alt="Logo Gaona Textil" />
+            <img src={ logo } width="200" height="200" alt="" loading="lazy" id="icon" />
           </div>
       
           <form>

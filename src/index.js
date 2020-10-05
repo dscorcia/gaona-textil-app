@@ -4,12 +4,15 @@ import './index.css';
 
 
 import { Login } from './components/Login';
+import { GaonaApp } from './components/GaonaApp';
 
 
 
 ReactDOM.render(
 
-    <Login />,
+
+
+    <GaonaApp />,
 
   document.getElementById('root')
 );
