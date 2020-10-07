@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-import { Login } from './components/Login';
 import { GaonaApp } from './components/GaonaApp';
 
 

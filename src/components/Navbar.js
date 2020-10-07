@@ -7,14 +7,18 @@ export const Navbar = () => {
         <div className="navbar navbar-expand-lg navbar-light bg-light">
             <a className="navbar-brand mr-100" href="#">
                 <img src={ logo } width="50" height="50" alt="" loading="lazy"></img>
-                Gaona Textil
+                &nbsp;Gaona Textil
             </a>
+            
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
+                
             </button>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
+           
                 <ul className="navbar-nav mr-auto">
+                
                     <li className="nav-item">
                         <a className="nav-link">Home <span className="sr-only">(current)</span></a>
                     </li>
@@ -34,11 +38,11 @@ export const Navbar = () => {
 
                 <button className="btn btn-outline-success my-2 my-sm-0 mr-2">
                     <i className="fas fa-user-check"></i>
-                    Ingresar 
+                    Usuario 
                 </button>
-                <button className="btn btn-outline-info my-2 my-sm-0">
-                    <i className="fas fa-id-card"></i>
-                    Registrarse 
+                <button className="btn btn-outline-danger my-2 my-sm-0">
+                    <i className="fas fa-sign-out-alt"></i>
+                    Salir 
                 </button>
             </div>
 
