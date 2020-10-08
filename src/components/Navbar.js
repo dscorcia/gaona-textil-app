@@ -5,7 +5,7 @@ export const Navbar = () => {
     return (
 
         <div className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand mr-100" href="#">
+            <a className="navbar-brand mr-100" href="/home">
                 <img src={ logo } width="50" height="50" alt="" loading="lazy"></img>
                 &nbsp;Gaona Textil
             </a>
@@ -20,19 +20,19 @@ export const Navbar = () => {
                 <ul className="navbar-nav mr-auto">
                 
                     <li className="nav-item">
-                        <a className="nav-link">Home <span className="sr-only">(current)</span></a>
+                        <a className="nav-link" href="/home">Home <span className="sr-only">(current)</span></a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link">Stock</a>
+                        <a className="nav-link" href="/stock">Stock</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link">Ventas</a>
+                        <a className="nav-link" href="/ventas">Ventas</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link">Clientes</a>
+                        <a className="nav-link" href="/clientes">Clientes</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link">Usuarios</a>
+                        <a className="nav-link" href="/usuarios">Usuarios</a>
                     </li>
                 </ul>
 

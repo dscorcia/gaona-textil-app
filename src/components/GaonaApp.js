@@ -1,10 +1,12 @@
 import React from 'react'
-import { LandingHome } from './LandingHome'
+import { AppRouter } from '../router/AppRouter'
+import { Navbar } from './Navbar'
 
 export const GaonaApp = () => {
     return (
         <div>
-            <LandingHome/>
+            <Navbar/>
+            <AppRouter/>
             
         </div>
     )
