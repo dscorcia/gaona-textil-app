@@ -5,11 +5,13 @@ export const Clientes = () => {
         <div className="container animated fadeIn faster">
             <br></br>
             <h3>Clientes</h3>
-            <br></br>
+           
         
+            <div className="bot">
             <button className="btn btn-success fab">
                 <i className="fas fa-plus"></i>
             </button>
+            </div>
             
             <table className="table">
             <thead className="thead-light">

@@ -257,18 +257,19 @@ input[type=text]:placeholder {
 /* FABS */
 .fab {
   border-radius: 100%;
-  bottom: 485px;
   font-size: 20px;
-  padding:15px;
-  position: fixed;
-  right: 95px;
+  padding:16px;
 }
 
 .fab-danger {
   bottom: 25px;
   padding: 10px;
   position: fixed;
-  left: 25px;
+  left: 
+  25px;
 }
 
-
+.bot {
+  text-align: right;
+  margin-bottom: 5px;
+}
