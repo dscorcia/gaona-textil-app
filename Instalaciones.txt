@@ -1,2 +1,6 @@
 
 npm install react-router-dom
+
+npm install react-redux redux redux-thunk
+
+npm install sweetalert2

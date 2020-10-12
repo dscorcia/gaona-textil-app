@@ -5,11 +5,12 @@ export const Stock = () => {
         <div className="container animated fadeIn faster">
             <br></br>
             <h3>Articulos</h3>
-            <br></br>
         
-            <button className="btn btn-success fab">
-                <i className="fas fa-plus"></i>
-            </button>
+            <div className="bot-sum">
+                <button className="btn btn-success fab">
+                    <i className="fas fa-plus"></i>
+                </button>
+            </div>
             
             
             <table className="table">

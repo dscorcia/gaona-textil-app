@@ -1,27 +1,78 @@
 import React from 'react';
 import logo from '../assets/images/logoGaona.jpg';
+import { useDispatch } from 'react-redux';
+import { useForm } from '../hooks/useForm';
+import { startLogin } from '../actions/auth';
+//import Swal from 'sweetalert2';
+
 
 export const Login = () => {
+
+  const dispatch = useDispatch();
+
+  const [ formLoginValues, handleLoginInputChange ] = useForm({
+    name: 'eveyazmins',
+    password: 'labanda',
+    empresa: 'Gaona'
+  });
+
+  const { name, password, empresa } = formLoginValues;
+
+  const handleLogin = ( e ) => {
+    e.preventDefault();
+    console.log(formLoginValues);
+    dispatch( startLogin( name, password, empresa ) );
+  }
+
+
+
     return (
-        <div className="wrapper fadeInDown">
-        <div id="formContent">
-           
-          <div className="fadeIn first">
-            <img src={ logo } width="200" height="200" alt="" loading="lazy" id="icon" />
-          </div>
-      
-          <form>
-            <input type="text" id="login" className="fadeIn second" name="login" placeholder="Usuario"></input>
-            <input type="password" id="password" className="fadeIn third" name="password" placeholder="Password"></input>
-            <input type="text" id="empresa" className="fadeIn second" name="empresa" placeholder="Empresa"></input>
-            <input type="submit" className="fadeIn fourth" value="Ingresar"></input>
-          </form>
-      
-          <div id="formFooter">
-            <a className="underlineHover" href="#">Forgot Password?</a>
-          </div>
-      
+    
+    <div className="wrapper fadeInDown">
+      <div id="formContent">
+        <div className="fadeIn first">
+          <img src={ logo } width="200" height="200" alt="" loading="lazy" id="icon" />
         </div>
+        
+        <form onSubmit={ handleLogin }>
+          <input 
+            type="text" 
+            id="login" 
+            className="fadeIn first" 
+            name="name" 
+            placeholder="Usuario"
+            value={ name }
+            onChange={ handleLoginInputChange }
+            >
+
+          </input>
+
+          <input 
+            type="password" 
+            id="password" 
+            className="fadeIn second" 
+            name="password" 
+            placeholder="Contraseña"
+            value={ password }
+            onChange={ handleLoginInputChange }
+            >
+          </input>
+
+          <input 
+            type="text" 
+            id="empresa" 
+            className="fadeIn third" 
+            name="empresa" 
+            placeholder="Empresa"
+            value={ empresa }
+            onChange={ handleLoginInputChange }
+            >  
+            </input>
+
+          <input type="submit" className="fadeIn fourth" value="Ingresar"></input>
+     
+        </form>
       </div>
+    </div>
     )
 }

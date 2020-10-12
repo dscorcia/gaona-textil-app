@@ -1,9 +1,5 @@
 /* BASIC */
 
-rightbtn{
-  text-align: right;
-
-}
 
 html {
   background-color: #56baed;
@@ -254,7 +250,14 @@ input[type=text]:placeholder {
 }
 
 
-/* FABS */
+/* --------------- BOTONES --------------- */
+
+.bot-sum {
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+/* FABS - boton circular*/
 .fab {
   border-radius: 100%;
   font-size: 20px;
@@ -267,9 +270,4 @@ input[type=text]:placeholder {
   position: fixed;
   left: 
   25px;
-}
-
-.bot {
-  text-align: right;
-  margin-bottom: 5px;
 }

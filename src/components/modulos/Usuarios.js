@@ -8,19 +8,21 @@ export const Usuarios = () => {
         <div className="container animated fadeIn faster">
             <br></br>
             <h3>Usuarios</h3>
-            <br></br>
         
-            <button className="btn btn-success fab">
-                <i className="fas fa-plus"></i>
-            </button>
+            <div className="bot-sum">
+                <button className="btn btn-success fab">
+                    <i className="fas fa-plus"></i>
+                </button>
+            </div>
             
             <table className="table">
             <thead className="thead-light">
                 <tr>
-                    <th scope="col">ID</th>
+                    <th scope="col">Usuario</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">DNI</th>
+                    <th scope="col">Contraseña</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -31,6 +33,8 @@ export const Usuarios = () => {
                         <td>Mark</td>
                         <td>Otto</td>
                         <td>@mdo</td>
+                        <td>@contraseña</td>
+                        
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
@@ -46,6 +50,7 @@ export const Usuarios = () => {
                         <td>Jacob</td>
                         <td>Thornton</td>
                         <td>@fat</td>
+                        <td>@contraseña</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
@@ -60,6 +65,7 @@ export const Usuarios = () => {
                         <td>Larry</td>
                         <td>the Bird</td>
                         <td>@twitter</td>
+                        <td>@contraseña</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
