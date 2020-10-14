@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Navbar } from '../Navbar';
 
 export const Clientes = () => {
     return (
+        <div>
+            <Navbar/>
+        
         <div className="container animated fadeIn faster">
             <br></br>
             <h3>Clientes</h3>
@@ -63,6 +67,7 @@ export const Clientes = () => {
 
         </table>
             
+        </div>
         </div>
     )
 }

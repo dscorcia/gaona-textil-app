@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { Navbar } from '../Navbar';
 
 export const Stock = () => {
     return (
+        <div>
+            <Navbar/>
+        
         <div className="container animated fadeIn faster">
             <br></br>
             <h3>Articulos</h3>
@@ -71,6 +75,7 @@ export const Stock = () => {
 
         </table>
             
+        </div>
         </div>
     )
 }

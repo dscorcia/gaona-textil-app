@@ -13,15 +13,14 @@ export const Login = () => {
   const [ formLoginValues, handleLoginInputChange ] = useForm({
     name: 'eveyazmins',
     password: 'labanda',
-    empresa: 'Gaona'
   });
 
-  const { name, password, empresa } = formLoginValues;
+  const { name, password } = formLoginValues;
 
   const handleLogin = ( e ) => {
     e.preventDefault();
     console.log(formLoginValues);
-    dispatch( startLogin( name, password, empresa ) );
+    dispatch( startLogin( name, password ) );
   }
 
 
@@ -57,17 +56,6 @@ export const Login = () => {
             onChange={ handleLoginInputChange }
             >
           </input>
-
-          <input 
-            type="text" 
-            id="empresa" 
-            className="fadeIn third" 
-            name="empresa" 
-            placeholder="Empresa"
-            value={ empresa }
-            onChange={ handleLoginInputChange }
-            >  
-            </input>
 
           <input type="submit" className="fadeIn fourth" value="Ingresar"></input>
      
