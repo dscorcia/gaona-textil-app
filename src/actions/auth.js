@@ -4,10 +4,10 @@ import Swal from 'sweetalert2';
 
 
 
-export const startLogin = ( name, password, empresa ) => {
+export const startLogin = ( name, password) => {
     return async( dispatch ) => {
 
-        const resp = await fetchSinToken( 'auth', { name, password, empresa }, 'POST' );
+        const resp = await fetchSinToken( 'auth', { name, password }, 'POST' );
         const body = await resp.json();
 
         if( body.ok ) {
@@ -26,6 +26,7 @@ export const startLogin = ( name, password, empresa ) => {
     }
 }
 
+/*
 export const startRegister = ( email, password, name ) => {
     return async( dispatch ) => {
 
@@ -47,6 +48,7 @@ export const startRegister = ( email, password, name ) => {
 
     }
 }
+*/
 
 export const startChecking = () => {
     return async(dispatch) => {
