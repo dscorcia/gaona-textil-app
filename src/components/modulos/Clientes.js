@@ -17,6 +17,7 @@ export const Clientes = () => {
                 <tr>
                     <th scope="col">CUIT</th>
                     <th scope="col">Razon Social</th>
+                    <th scope="col">Telefono</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@ export const Clientes = () => {
                 <tr>
                     <th scope="row">1</th>
                         <td>Mark</td>
+                        <td>1234567890</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
@@ -38,6 +40,7 @@ export const Clientes = () => {
                 <tr>
                     <th scope="row">2</th>
                         <td>Jacob</td>
+                        <td>1234585201</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
@@ -50,6 +53,7 @@ export const Clientes = () => {
                 <tr>
                     <th scope="row">3</th>
                         <td>Larry</td>
+                        <td>5214569854</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>

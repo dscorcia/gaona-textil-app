@@ -23,6 +23,7 @@ export const Usuarios = () => {
                     <th scope="col">Apellido</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Contraseña</th>
+                    <th scope="col">Perfil</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
@@ -34,7 +35,7 @@ export const Usuarios = () => {
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>@contraseña</td>
-                        
+                        <td>Administrador</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
@@ -51,6 +52,7 @@ export const Usuarios = () => {
                         <td>Thornton</td>
                         <td>@fat</td>
                         <td>@contraseña</td>
+                        <td>Empleado</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
@@ -66,6 +68,7 @@ export const Usuarios = () => {
                         <td>the Bird</td>
                         <td>@twitter</td>
                         <td>@contraseña</td>
+                        <td>Empleado</td>
                         <td>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
