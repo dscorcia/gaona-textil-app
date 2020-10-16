@@ -42,6 +42,7 @@ export const Login = () => {
             placeholder="Usuario"
             value={ name }
             onChange={ handleLoginInputChange }
+            required
             >
 
           </input>
@@ -54,6 +55,7 @@ export const Login = () => {
             placeholder="Contraseña"
             value={ password }
             onChange={ handleLoginInputChange }
+            required
             >
           </input>
 
