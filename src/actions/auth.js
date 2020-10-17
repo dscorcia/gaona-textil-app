@@ -18,6 +18,8 @@ export const startLogin = ( name, password) => {
                 uid: body.uid,
                 name: body.name
             }) )
+
+            console.log("name" + body.name);
         } else {
             Swal.fire('Error', body.msg, 'error');
         }
@@ -25,6 +27,7 @@ export const startLogin = ( name, password) => {
 
     }
 }
+
 
 /*
 export const startRegister = ( email, password, name ) => {
