@@ -1,7 +1,18 @@
 import React from 'react';
 import logo from '../assets/images/logoGaona.jpg';
+import { useSelector, useDispatch } from 'react-redux';
+import { startLogout } from '../actions/auth';
 
 export const Navbar = () => {
+
+    const dispatch = useDispatch();
+    const { name } = useSelector( state => state.auth );
+
+    
+    const handleLogout = () => {
+        dispatch( startLogout() );
+    }
+    
     return (
 
         <div className="navbar navbar-expand-lg navbar-light bg-light">
@@ -14,6 +25,10 @@ export const Navbar = () => {
                 <span className="navbar-toggler-icon"></span>
                 
             </button>
+
+            <span className="navbar-brand">
+                { name }
+            </span>
 
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
            
@@ -38,9 +53,9 @@ export const Navbar = () => {
 
                 <button className="btn btn-outline-success my-2 my-sm-0 mr-2">
                     <i className="fas fa-user-check"></i>
-                    Usuario 
+                    <span> { name } </span> 
                 </button>
-                <button className="btn btn-outline-danger my-2 my-sm-0">
+                <button className="btn btn-outline-danger my-2 my-sm-0" onClick={ handleLogout }>
                     <i className="fas fa-sign-out-alt"></i>
                     Salir 
                 </button>
