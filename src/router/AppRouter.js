@@ -16,6 +16,9 @@ import { Stock } from '../components/modulos/Stock';
 import { Usuarios } from '../components/modulos/Usuarios';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
+import { Remitos } from '../components/modulos/Remitos';
+import { Facturas } from '../components/modulos/Facturas';
+
 
 export const AppRouter = () => {
 
@@ -70,6 +73,20 @@ export const AppRouter = () => {
                         exact 
                         path="/usuarios" 
                         component={ Usuarios }
+                        isAuthenticated={ !!uid } 
+                    />
+
+                    <PrivateRoute 
+                        exact 
+                        path="/remitos" 
+                        component={ Remitos }
+                        isAuthenticated={ !!uid } 
+                    />
+
+                    <PrivateRoute 
+                        exact 
+                        path="/facturas" 
+                        component={ Facturas }
                         isAuthenticated={ !!uid } 
                     />
 

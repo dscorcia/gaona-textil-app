@@ -20,10 +20,13 @@ export const Stock = () => {
             <table className="table">
             <thead className="thead-light">
                 <tr>
+                    <th scope="col">Estado</th>
                     <th scope="col">ID Articulo</th>
-                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">Color</th>
                     <th scope="col">Cantidad</th>
+                    <th scope="col">Ubicacion</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
@@ -32,7 +35,19 @@ export const Stock = () => {
                     <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
                         <td>
+                            <button className="btn btn-info mr-2">
+                                <i className="fas fa-map-marked-alt mr-2"></i>
+                                 Ubicacion
+                            </button>
+                        </td>
+                        <td>
+                            <button className="btn btn-success mr-2">
+                                <i className="fas fa-file-alt mr-2"></i>
+                                 Ver Detalle
+                            </button>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
                             </button>
@@ -47,7 +62,19 @@ export const Stock = () => {
                     <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
                         <td>
+                            <button className="btn btn-info mr-2">
+                                <i className="fas fa-map-marked-alt mr-2"></i>
+                                 Ubicacion
+                            </button>
+                        </td>
+                        <td>
+                            <button className="btn btn-success mr-2">
+                                <i className="fas fa-file-alt mr-2"></i>
+                                 Ver Detalle
+                            </button>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
                             </button>
@@ -61,7 +88,19 @@ export const Stock = () => {
                     <th scope="row">3</th>
                         <td>Larry</td>
                         <td>the Bird</td>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>    
+                            <button className="btn btn-info mr-2">
+                                <i className="fas fa-map-marked-alt mr-2"></i>
+                                 Ubicacion
+                            </button>
+                        </td>
                         <td>
+                            <button className="btn btn-success mr-2">
+                                <i className="fas fa-file-alt mr-2"></i>
+                                 Ver Detalle
+                            </button>
                             <button className="btn btn-info mr-2">
                                 <i className="fas fa-edit"></i>
                             </button>
