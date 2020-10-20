@@ -8,4 +8,10 @@ export const types = {
     authStartStartTokenRenew: '[auth] Start token renew',
     authLogout: '[auth] Logout',
 
+    usuarioAddNew: '[usuario] Add new',
+    //eventClearActiveEvent: '[event] Clear active event',
+    usuarioUpdated: '[usuario] Usuario updated',
+    usuarioDeleted: '[usuario] Usuario deleted',
+    usuarioLoaded: '[usuario] Usuarios loaded',
+
 }
