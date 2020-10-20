@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { usuarioStartLoading } from '../../../actions/usuarios';
 import { Navbar } from '../../Navbar';
 
@@ -8,7 +8,9 @@ export const Usuarios = () => {
 
     const dispatch = useDispatch();
 
-    
+    const { usuarios } = useSelector( state => state.usuarios );
+
+    //console.log(usuarios);
 
     useEffect(() => {
         dispatch( usuarioStartLoading() );
@@ -37,62 +39,35 @@ export const Usuarios = () => {
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">DNI</th>
-                    <th scope="col">Contraseña</th>
                     <th scope="col">Perfil</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@contraseña</td>
-                        <td>Administrador</td>
-                        <td>
-                            <button className="btn btn-info mr-2">
-                                <i className="fas fa-edit"></i>
-                            </button>
-                            <button className="btn btn-danger">
-                                <i className="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                        
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@contraseña</td>
-                        <td>Empleado</td>
-                        <td>
-                            <button className="btn btn-info mr-2">
-                                <i className="fas fa-edit"></i>
-                            </button>
-                            <button className="btn btn-danger">
-                                <i className="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                    </tr>
-                <tr>
-                    <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                        <td>@contraseña</td>
-                        <td>Empleado</td>
-                        <td>
-                            <button className="btn btn-info mr-2">
-                                <i className="fas fa-edit"></i>
-                            </button>
-                            <button className="btn btn-danger">
-                                <i className="fas fa-trash-alt"></i>
-                            </button>
-                        </td>
-                </tr>
+                {
+                    usuarios.map ( usuario => {
+                        return(
+                            <tr key={ usuario.name}>
+                                <td>{ usuario.name }</td>
+                                <td>{ usuario.nombre }</td>
+                                <td>{ usuario.apellido }</td>
+                                <td>{ usuario.dni }</td>
+                                <td>{ usuario.perfil }</td>
+                                <td>
+                                    <button className="btn btn-info mr-2">
+                                        <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="btn btn-danger">
+                                        <i className="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        )
+                    })
+
+                }
             </tbody>
 
         </table>
