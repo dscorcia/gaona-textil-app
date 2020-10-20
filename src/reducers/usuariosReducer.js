@@ -12,3 +12,20 @@ const initialState = {
     
 };
 
+export const usuariosReducer = ( state = initialState, action ) => {
+
+    switch ( action.type ) {
+
+        case types.usuarioLoaded:
+            return {
+                ...state,
+                usuarios: [ ...action.payload ]
+            }
+
+
+        default:
+            return state;
+    }
+
+
+}

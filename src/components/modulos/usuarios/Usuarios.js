@@ -1,8 +1,19 @@
-import React from 'react';
-import { Navbar } from '../Navbar';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { usuarioStartLoading } from '../../../actions/usuarios';
+import { Navbar } from '../../Navbar';
 
 
 export const Usuarios = () => {
+
+    const dispatch = useDispatch();
+
+    
+
+    useEffect(() => {
+        dispatch( usuarioStartLoading() );
+        
+    }, [ dispatch ]);
 
    
     return (

@@ -13,7 +13,7 @@ import { startChecking } from '../actions/auth';
 import { Clientes } from '../components/modulos/Clientes';
 import { Ventas } from '../components/modulos/Ventas';
 import { Stock } from '../components/modulos/Stock';
-import { Usuarios } from '../components/modulos/Usuarios';
+import { Usuarios } from '../components/modulos/usuarios/Usuarios';
 import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Remitos } from '../components/modulos/Remitos';
