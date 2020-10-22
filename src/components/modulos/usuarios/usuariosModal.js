@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
+import { useSelector, useDispatch } from 'react-redux';
+import { uiCloseModal } from '../../../actions/ui';
+import { usuarioAddNew, usuarioClearActiveUsuario, usuarioUpdated } from '../../../actions/usuarios';
 
 const customStyles = {
     content : {
@@ -13,15 +16,38 @@ const customStyles = {
   };
   Modal.setAppElement('#root');
 
-export const usuariosModal = () => {
+  const initUsuario = {
+    name: '',
+    nombre: '',
+    apellido: '',
+    dni: 0,
+    perfil: '',
+    password: ''
 
-    const [formValues, setFormValues] = useState( initEvent );
+}
 
-    const { usuario, nombre, apellido, dni, contraseña, perfil } = formValues;
+export const UsuariosModal = () => {
 
-    const [ usuarioValid, setUsuarioValid ] = useState(true);
+    const { modalOpen } = useSelector( state => state.ui );
+    const { activeUsuario } = useSelector( state => state.usuarios );
+    const dispatch = useDispatch();
 
-    const [ passValid, setPassValid ] = useState(true);
+    const [formValues, setFormValues] = useState( initUsuario );
+
+    const { name, nombre, apellido, dni, password, perfil } = formValues;
+
+    //const [ usuarioValid, setUsuarioValid ] = useState(true);
+
+    //const [ passValid, setPassValid ] = useState(true);
+
+    useEffect(() => {
+        if ( activeUsuario ) {
+            setFormValues( activeUsuario );
+        } else {
+            setFormValues( initUsuario );
+        }
+    }, [activeUsuario, setFormValues])
+
 
     const handleInputChange = ({ target }) => {
         setFormValues({
@@ -33,13 +59,15 @@ export const usuariosModal = () => {
     const closeModal = () => {
         // TODO: cerrar el modal
         dispatch( uiCloseModal() );
-        dispatch( eventClearActiveEvent() );
-        setFormValues( initEvent );
+        dispatch( usuarioClearActiveUsuario() );
+        setFormValues( initUsuario );
     }
+
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
+        /*
         if ( usuario.trim().length < 2 ) {
             return setUsuarioValid(false);
         }
@@ -48,6 +76,17 @@ export const usuariosModal = () => {
         }
         setUsuarioValid(true);
         setPassValid(true);
+        */
+
+       if ( activeUsuario ) {
+            dispatch( usuarioUpdated( formValues ) )
+        } 
+        else {
+            dispatch( usuarioAddNew({
+                ...formValues,
+                id: name
+            }) );
+        }
         closeModal();
     }
 
@@ -64,28 +103,37 @@ export const usuariosModal = () => {
             <hr />
             <form className="container" 
                 onSubmit={ handleSubmitForm }>
+
                 <div className="form-group">
                     <label>Usuario</label>
                     <input 
-                        className={ `form-control ${ !usuarioValid && 'is-invalid' } `}
+                        className="form-control"
                         placeholder="Usuario"
-                        value={ usuario }
+                        name="name"
+                        autoComplete="off"
+                        value={ name }
                         onChange={ handleInputChange }
                     />
                 </div>
                 <div className="form-group">
-                    <label>Nombre</label>
+                <label>Nombre</label>
                     <input 
                         className="form-control" 
                         placeholder="Nombre"
+                        autoComplete="off"
+                        name="nombre"
                         value={ nombre }
-                        onChange={ handleInputChange } />
+                        onChange={ handleInputChange }
+                    />
                 </div>
+                
                 <div className="form-group">
                     <label>Apellido</label>
                     <input 
                         className="form-control" 
                         placeholder="Apellido"
+                        autoComplete="off"
+                        name="apellido"
                         value={ apellido }
                         onChange={ handleInputChange } />
                 </div>
@@ -94,15 +142,19 @@ export const usuariosModal = () => {
                     <input 
                         className="form-control" 
                         placeholder="DNI"
+                        autoComplete="off"
+                        name="dni"
                         value={ dni }
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
                     <label>Contraseña</label>
                     <input 
-                        className={ `form-control ${ !passValid && 'is-invalid' } `}
+                        className="form-control" 
                         placeholder="Contraseña"
-                        value={ contraseña }
+                        autoComplete="off"
+                        name="password"
+                        value={ password }
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
@@ -110,13 +162,15 @@ export const usuariosModal = () => {
                     <input 
                         className="form-control" 
                         placeholder="Perfil"
+                        autoComplete="off"
+                        name="perfil"
                         value={ perfil }
                         onChange={ handleInputChange } />
                 </div>
             
             <button
             type="submit"
-            className="btn btn-outline-primary btn-block"
+            className="btn btn-info btn-block"
             >
                 <i className="far fa-save"></i>
                 <span> Guardar</span>

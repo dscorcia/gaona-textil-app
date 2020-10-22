@@ -8,6 +8,13 @@ export const usuarioAddNew = (usuario) => ({
     payload: usuario
 });
 
+export const usuarioSetActive = (usuario) => ({
+    type: types.usuarioSetActive,
+    payload: usuario
+});
+
+export const usuarioClearActiveUsuario = () => ({ type: types.usuarioClearActiveUsuario });
+
 
 export const usuarioUpdated = ( usuario ) => ({
     type: types.usuarioUpdated,
