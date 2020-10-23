@@ -13,6 +13,8 @@ export const usuarioSetActive = (usuario) => ({
     payload: usuario
 });
 
+
+
 export const usuarioClearActiveUsuario = () => ({ type: types.usuarioClearActiveUsuario });
 
 
@@ -43,6 +45,9 @@ export const usuarioStartLoading = () => {
         }
     }
 }
+
+
+
 
 const usuarioLoaded = (usuarios) => ({
     type: types.usuarioLoaded,

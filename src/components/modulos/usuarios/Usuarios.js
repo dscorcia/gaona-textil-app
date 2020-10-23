@@ -26,6 +26,11 @@ export const Usuarios = () => {
         dispatch( uiOpenModal() );
     }
 
+    const onSelectUsuario = (e) => {
+        dispatch( usuarioSetActive( e ) );
+        //console.log(e);
+        //console.log("click!");
+    }
 
 
     
@@ -72,7 +77,7 @@ export const Usuarios = () => {
                                 <td>{ usuario.dni }</td>
                                 <td>{ usuario.perfil }</td>
                                 <td>
-                                    <button className="btn btn-info mr-2" onClick={ onModifyUsuario }>
+                                    <button className="btn btn-info mr-2" onChange={ onModifyUsuario } >
                                         <i className="fas fa-edit"></i>
                                     </button>
                                     <button className="btn btn-danger">
@@ -89,7 +94,13 @@ export const Usuarios = () => {
 
         </table>
             
+  
         </div>
+        {
+            activeUsuario
+        }
+
+
         <UsuariosModal />
         </div>
     )

@@ -48,7 +48,7 @@ export const usuariosReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 usuarios: state.usuarios.map(
-                    e => ( e.id === action.payload.id ) ? action.payload : e
+                    e => ( e.name === action.payload.name ) ? action.payload : e
                 )
             }
         
@@ -56,7 +56,7 @@ export const usuariosReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 usuarios: state.usuarios.filter(
-                    e => ( e.id !== state.activeUsuario.id )
+                    e => ( e.name !== state.activeUsuario.name )
                 ),
                 activeUsuario: null
 
