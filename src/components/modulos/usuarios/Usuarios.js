@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../../../actions/ui';
-import { usuarioStartLoading, usuarioClearActiveUsuario, usuarioSetActive } from '../../../actions/usuarios';
+import { usuarioStartLoading, usuarioClearActiveUsuario, usuarioSetActive, usuarioDeleted } from '../../../actions/usuarios';
 import { Navbar } from '../../Navbar';
-import { UsuariosModal } from './UsuariosModal';
+import { UsuariosModal } from '../usuarios/UsuariosModal';
 
 
 export const Usuarios = () => {
@@ -11,6 +11,7 @@ export const Usuarios = () => {
     const dispatch = useDispatch();
 
     const { usuarios, activeUsuario } = useSelector( state => state.usuarios );
+
 
     //console.log(usuarios);
 
@@ -22,21 +23,27 @@ export const Usuarios = () => {
 
     const onOpenModal = (e) => {
         // console.log(e);
-        //dispatch( usuarioSetActive( e ) );
         dispatch( uiOpenModal() );
     }
 
     const onSelectUsuario = (e) => {
-        dispatch( usuarioSetActive( e ) );
+   //     dispatch( usuarioSetActive( e ) );
         //console.log(e);
         //console.log("click!");
     }
 
 
-    
-    const onModifyUsuario = (e) => {
-        dispatch( usuarioSetActive( e ) );
+
+    function onModifyUsuario(usuario){
+
+        dispatch( usuarioSetActive(usuario ) );
         dispatch( uiOpenModal() );
+
+    }
+
+    function onDeleteUsuario(usuario){
+        dispatch( usuarioSetActive(usuario ) );
+        dispatch( usuarioDeleted(usuario) );
     }
 
    
@@ -77,10 +84,10 @@ export const Usuarios = () => {
                                 <td>{ usuario.dni }</td>
                                 <td>{ usuario.perfil }</td>
                                 <td>
-                                    <button className="btn btn-info mr-2" onChange={ onModifyUsuario } >
+                                    <button className="btn btn-info mr-2" onClick={ ()=> onModifyUsuario(usuario)}>
                                         <i className="fas fa-edit"></i>
                                     </button>
-                                    <button className="btn btn-danger">
+                                    <button className="btn btn-danger" onClick={ ()=> onDeleteUsuario(usuario)}>
                                         <i className="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -96,9 +103,7 @@ export const Usuarios = () => {
             
   
         </div>
-        {
-            activeUsuario
-        }
+      
 
 
         <UsuariosModal />

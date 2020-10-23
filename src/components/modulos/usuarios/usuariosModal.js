@@ -112,7 +112,7 @@ export const UsuariosModal = () => {
                         placeholder="Usuario"
                         name="name"
                         autoComplete="off"
-                        value={ name }
+                        value={ name || ""}
                         onChange={ handleInputChange }
                     />
                 </div>
@@ -123,7 +123,7 @@ export const UsuariosModal = () => {
                         placeholder="Nombre"
                         autoComplete="off"
                         name="nombre"
-                        value={ nombre }
+                        value={ nombre || "" }
                         onChange={ handleInputChange }
                     />
                 </div>
@@ -135,7 +135,7 @@ export const UsuariosModal = () => {
                         placeholder="Apellido"
                         autoComplete="off"
                         name="apellido"
-                        value={ apellido }
+                        value={ apellido || "" }
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
@@ -145,7 +145,7 @@ export const UsuariosModal = () => {
                         placeholder="DNI"
                         autoComplete="off"
                         name="dni"
-                        value={ dni }
+                        value={ dni || ""}
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
@@ -155,7 +155,7 @@ export const UsuariosModal = () => {
                         placeholder="Contraseña"
                         autoComplete="off"
                         name="password"
-                        value={ password }
+                        value={ password || ""}
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
@@ -165,7 +165,7 @@ export const UsuariosModal = () => {
                         placeholder="Perfil"
                         autoComplete="off"
                         name="perfil"
-                        value={ perfil }
+                        value={ perfil || ""}
                         onChange={ handleInputChange } />
                 </div>
             

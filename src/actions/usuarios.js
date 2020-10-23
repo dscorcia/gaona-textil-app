@@ -8,10 +8,12 @@ export const usuarioAddNew = (usuario) => ({
     payload: usuario
 });
 
+
 export const usuarioSetActive = (usuario) => ({
     type: types.usuarioSetActive,
     payload: usuario
 });
+
 
 
 
@@ -24,7 +26,11 @@ export const usuarioUpdated = ( usuario ) => ({
 });
 
 
-export const usuarioDeleted = () => ({ type: types.usuarioDeleted });
+export const usuarioDeleted = (usuario) => ({ 
+    type: types.usuarioDeleted,
+    payload: usuario
+ });
+
 
 export const usuarioStartLoading = () => {
     return async (dispatch) =>{
