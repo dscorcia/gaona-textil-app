@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../../actions/ui';
-import { usuarioAddNew, usuarioClearActiveUsuario, usuarioUpdated } from '../../../actions/usuarios';
+import { usuarioClearActiveUsuario, usuarioStartUpdate, usuarioStartAddNew } from '../../../actions/usuarios';
 
 const customStyles = {
     content : {
@@ -80,13 +80,10 @@ export const UsuariosModal = () => {
         */
 
        if ( activeUsuario ) {
-            dispatch( usuarioUpdated( formValues ) )
+            dispatch( usuarioStartUpdate( formValues ) );
         } 
         else {
-            dispatch( usuarioAddNew({
-                ...formValues,
-                id: name
-            }) );
+            dispatch( usuarioStartAddNew(formValues) );
         }
         closeModal();
     }

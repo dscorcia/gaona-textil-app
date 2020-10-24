@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../../../actions/ui';
-import { usuarioStartLoading, usuarioClearActiveUsuario, usuarioSetActive, usuarioDeleted } from '../../../actions/usuarios';
+import { usuarioStartLoading, usuarioClearActiveUsuario, usuarioSetActive, usuarioStartDelete } from '../../../actions/usuarios';
 import { Navbar } from '../../Navbar';
 import { UsuariosModal } from '../usuarios/UsuariosModal';
+
 
 
 export const Usuarios = () => {
@@ -41,10 +42,12 @@ export const Usuarios = () => {
 
     }
 
+    
     function onDeleteUsuario(usuario){
         dispatch( usuarioSetActive(usuario ) );
-        dispatch( usuarioDeleted(usuario) );
+        dispatch( usuarioStartDelete() );
     }
+    
 
    
     return (

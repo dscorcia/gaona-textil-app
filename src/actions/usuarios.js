@@ -1,6 +1,6 @@
 import { fetchConToken } from "../helpers/fetch";
 import { types } from "../types/types";
-
+import Swal from 'sweetalert2';
 
 
 export const usuarioAddNew = (usuario) => ({
@@ -15,8 +15,6 @@ export const usuarioSetActive = (usuario) => ({
 });
 
 
-
-
 export const usuarioClearActiveUsuario = () => ({ type: types.usuarioClearActiveUsuario });
 
 
@@ -26,10 +24,42 @@ export const usuarioUpdated = ( usuario ) => ({
 });
 
 
-export const usuarioDeleted = (usuario) => ({ 
-    type: types.usuarioDeleted,
-    payload: usuario
+export const usuarioDeleted = () => ({ 
+    type: types.usuarioDeleted
  });
+
+ const usuarioLoaded = (usuarios) => ({
+    type: types.usuarioLoaded,
+    payload: usuarios
+});
+
+
+
+
+ export const usuarioStartDelete = () => {
+    return async ( dispatch, getState ) => {
+
+        const { name } = getState().usuarios.activeUsuario;
+        try {
+            const resp = await fetchConToken(`auth/delete/${ name }`, {}, 'DELETE' );
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( usuarioDeleted() );
+                Swal.fire(`Usuario ${name} Eliminado`, body.msg, 'success');
+                setInterval(function(){ window.location.reload(); }, 2000);
+                
+            } else {
+                Swal.fire('Error', body.msg, 'error');
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
 
 
 export const usuarioStartLoading = () => {
@@ -53,9 +83,50 @@ export const usuarioStartLoading = () => {
 }
 
 
+export const usuarioStartAddNew = ( usuario ) => {
+    return async( dispatch, getState ) => {
+
+        //const { uid, name } = getState().auth;s
+
+        try {
+            const resp = await fetchConToken('auth/new', usuario, 'POST');
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( usuarioAddNew( usuario ) );
+                Swal.fire(`Usuario ${usuario.name} creado con exito!`, '', 'success');
+            }
+            else {
+            Swal.fire('Error', body.msg, 'error');
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const usuarioStartUpdate = ( usuario ) => {
+    return async(dispatch) => {
+
+        try {
+            const resp = await fetchConToken(`auth/modify/${ usuario.name }`, usuario, 'PUT' );
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( usuarioUpdated( usuario ) );
+                Swal.fire(`Usuario ${usuario.name} modificado con exito!`, '', 'success');
+            } else {
+                Swal.fire('Error', body.msg, 'error');
+            }
 
 
-const usuarioLoaded = (usuarios) => ({
-    type: types.usuarioLoaded,
-    payload: usuarios
-})
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
+
+
