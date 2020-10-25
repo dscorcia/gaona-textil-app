@@ -3,6 +3,8 @@ export const types = {
 
     uiOpenModal: '[ui] Open modal',
     uiCloseModal: '[ui] Close modal',
+    uiOpenPassModal: '[ui] Open Pass modal',
+    uiClosePassModal: '[ui] Close Pass modal',
     
 
     authCheckingFinish: '[auth] Finish checking login state',

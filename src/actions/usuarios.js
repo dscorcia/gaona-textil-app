@@ -23,6 +23,11 @@ export const usuarioUpdated = ( usuario ) => ({
     payload: usuario
 });
 
+export const usuarioUpdatedPass = (  ) => ({
+    type: types.usuarioUpdated
+    //payload: usuario
+});
+
 
 export const usuarioDeleted = () => ({ 
     type: types.usuarioDeleted
@@ -116,6 +121,31 @@ export const usuarioStartUpdate = ( usuario ) => {
             if ( body.ok ) {
                 dispatch( usuarioUpdated( usuario ) );
                 Swal.fire(`Usuario ${usuario.name} modificado con exito!`, '', 'success');
+            } else {
+                Swal.fire('Error', body.msg, 'error');
+            }
+
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
+export const usuarioStartUpdatePass = ( usuario ) => {
+    return async(dispatch) => {
+
+        try {
+            const resp = await fetchConToken(`auth/modifypass/${ usuario.name }`, usuario, 'PUT' );
+            const body = await resp.json();
+            console.log(body);
+
+            if ( body.ok ) {
+                dispatch( usuarioUpdated( usuario ) );
+                Swal.fire(`Usuario ${usuario.name} modificado con exito!`, '', 'success');
+                setInterval(function(){ window.location.reload(); }, 1000);
+
             } else {
                 Swal.fire('Error', body.msg, 'error');
             }

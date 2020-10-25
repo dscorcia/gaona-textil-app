@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { uiOpenModal } from '../../../actions/ui';
+import { uiOpenModal, uiOpenPassModal } from '../../../actions/ui';
 import { usuarioStartLoading, usuarioClearActiveUsuario, usuarioSetActive, usuarioStartDelete } from '../../../actions/usuarios';
 import { Navbar } from '../../Navbar';
 import { UsuariosModal } from '../usuarios/UsuariosModal';
+import { PassModal } from '../usuarios/PassModal';
 
 
 
@@ -27,6 +28,11 @@ export const Usuarios = () => {
         dispatch( uiOpenModal() );
     }
 
+    const onOpenPassModal = (e) => {
+        // console.log(e);
+        dispatch( uiOpenPassModal() );
+    }
+
     const onSelectUsuario = (e) => {
    //     dispatch( usuarioSetActive( e ) );
         //console.log(e);
@@ -42,6 +48,12 @@ export const Usuarios = () => {
 
     }
 
+    function onModifyPass(usuario){
+
+        dispatch( usuarioSetActive(usuario ) );
+        dispatch( uiOpenPassModal() );
+
+    }
     
     function onDeleteUsuario(usuario){
         dispatch( usuarioSetActive(usuario ) );
@@ -90,8 +102,11 @@ export const Usuarios = () => {
                                     <button className="btn btn-info mr-2" onClick={ ()=> onModifyUsuario(usuario)}>
                                         <i className="fas fa-edit"></i>
                                     </button>
-                                    <button className="btn btn-danger" onClick={ ()=> onDeleteUsuario(usuario)}>
+                                    <button className="btn btn-danger mr-2" onClick={ ()=> onDeleteUsuario(usuario)}>
                                         <i className="fas fa-trash-alt"></i>
+                                    </button>
+                                    <button className="btn btn-primary" onClick={ ()=> onModifyPass(usuario)}>
+                                        <i className="fas fa-sync-alt"></i> Password
                                     </button>
                                 </td>
                             </tr>
@@ -108,8 +123,8 @@ export const Usuarios = () => {
         </div>
       
 
-
         <UsuariosModal />
+        <PassModal />
         </div>
     )
 }

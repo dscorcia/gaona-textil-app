@@ -22,7 +22,7 @@ const customStyles = {
     apellido: '',
     dni: 0,
     perfil: '',
-    password: ''
+    //password: ''
 
 }
 
@@ -34,7 +34,9 @@ export const UsuariosModal = () => {
 
     const [formValues, setFormValues] = useState( initUsuario );
 
-    const { name, nombre, apellido, dni, password, perfil } = formValues;
+    const { name, nombre, apellido, dni, perfil } = formValues;
+
+
 
     //const [ usuarioValid, setUsuarioValid ] = useState(true);
 
@@ -143,16 +145,6 @@ export const UsuariosModal = () => {
                         autoComplete="off"
                         name="dni"
                         value={ dni || ""}
-                        onChange={ handleInputChange } />
-                </div>
-                <div className="form-group">
-                    <label>Contraseña</label>
-                    <input 
-                        className="form-control" 
-                        placeholder="Contraseña"
-                        autoComplete="off"
-                        name="password"
-                        value={ password || ""}
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
