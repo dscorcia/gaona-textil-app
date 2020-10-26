@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from '../Navbar';
+import { Navbar } from '../../Navbar';
 
 export const Clientes = () => {
     return (
@@ -19,6 +19,7 @@ export const Clientes = () => {
             <table className="table">
             <thead className="thead-light">
                 <tr>
+                    <th scope="col">Registro</th>
                     <th scope="col">CUIT</th>
                     <th scope="col">Razon Social</th>
                     <th scope="col">Nombre</th>
@@ -30,6 +31,7 @@ export const Clientes = () => {
             <tbody>
                 <tr>
                     <th scope="row">1</th>
+                        <td>1</td>
                         <td>Mark</td>
                         <td>1234567890</td>
                         <td>1234567890</td>
@@ -45,6 +47,7 @@ export const Clientes = () => {
                 </tr>
                 <tr>
                     <th scope="row">2</th>
+                        <td>1</td>
                         <td>Jacob</td>
                         <td>1234585201</td>
                         <td>1234567890</td>
@@ -59,6 +62,7 @@ export const Clientes = () => {
                     </tr>
                 <tr>
                     <th scope="row">3</th>
+                        <td>1</td>
                         <td>Larry</td>
                         <td>5214569854</td>
                         <td>1234567890</td>

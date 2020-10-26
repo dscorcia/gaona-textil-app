@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiClosePassModal } from '../../../actions/ui';
@@ -47,7 +47,6 @@ const customStyles = {
 
     const handleSubmitForm = (e) => {
         formValues.name = activeUsuario.name;
-        console.log(formValues.password);
         e.preventDefault();
         dispatch( usuarioStartUpdatePass( formValues ) );
         closePassModal();

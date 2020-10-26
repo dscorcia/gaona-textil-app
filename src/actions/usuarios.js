@@ -40,7 +40,6 @@ export const usuarioDeleted = () => ({
 
 
 
-
  export const usuarioStartDelete = () => {
     return async ( dispatch, getState ) => {
 
@@ -99,7 +98,7 @@ export const usuarioStartAddNew = ( usuario ) => {
 
             if ( body.ok ) {
                 dispatch( usuarioAddNew( usuario ) );
-                Swal.fire(`Usuario ${usuario.name} creado con exito!`, '', 'success');
+                Swal.fire(`Usuario ${usuario.name} creado con exito!`, 'Por favor actualice la Password', 'success');
             }
             else {
             Swal.fire('Error', body.msg, 'error');

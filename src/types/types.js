@@ -21,4 +21,11 @@ export const types = {
     usuarioDeleted: '[usuario] Usuario deleted',
     usuarioLoaded: '[usuario] Usuarios loaded',
 
+    clienteSetActive: '[cliente] Set Active',
+    clienteAddNew: '[cliente] Add new',
+    clienteClearActiveUsuario: '[cliente] Clear active cliente',
+    clienteUpdated: '[cliente] Cliente updated',
+    clienteDeleted: '[cliente] Cliente deleted',
+    clienteLoaded: '[cliente] Cliente loaded',
+
 }

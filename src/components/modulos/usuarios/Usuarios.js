@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal, uiOpenPassModal } from '../../../actions/ui';
-import { usuarioStartLoading, usuarioClearActiveUsuario, usuarioSetActive, usuarioStartDelete } from '../../../actions/usuarios';
+import { usuarioStartLoading, usuarioSetActive, usuarioStartDelete } from '../../../actions/usuarios';
 import { Navbar } from '../../Navbar';
 import { UsuariosModal } from '../usuarios/UsuariosModal';
 import { PassModal } from '../usuarios/PassModal';
@@ -15,8 +15,6 @@ export const Usuarios = () => {
     const { usuarios, activeUsuario } = useSelector( state => state.usuarios );
 
 
-    //console.log(usuarios);
-
     useEffect(() => {
         dispatch( usuarioStartLoading() );
         
@@ -27,18 +25,6 @@ export const Usuarios = () => {
         // console.log(e);
         dispatch( uiOpenModal() );
     }
-
-    const onOpenPassModal = (e) => {
-        // console.log(e);
-        dispatch( uiOpenPassModal() );
-    }
-
-    const onSelectUsuario = (e) => {
-   //     dispatch( usuarioSetActive( e ) );
-        //console.log(e);
-        //console.log("click!");
-    }
-
 
 
     function onModifyUsuario(usuario){
