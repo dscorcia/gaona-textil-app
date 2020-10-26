@@ -91,7 +91,7 @@ export const usuarioStartLoading = () => {
 export const usuarioStartAddNew = ( usuario ) => {
     return async( dispatch, getState ) => {
 
-        //const { uid, name } = getState().auth;s
+        //const { uid, name } = getState().auth;
 
         try {
             const resp = await fetchConToken('auth/new', usuario, 'POST');
