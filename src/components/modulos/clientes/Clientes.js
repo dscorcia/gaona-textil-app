@@ -67,7 +67,7 @@ export const Clientes = () => {
                         
                         return(
                             <tr key={ i}>
-                                <td>{ cliente.idRegistro }</td>
+                                <td>{ i }</td>
                                 <td>{ cliente.cuit }</td>
                                 <td>{ cliente.razonSocial }</td>
                                 <td>{ cliente.nombre }</td>
