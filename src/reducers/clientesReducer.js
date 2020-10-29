@@ -2,6 +2,7 @@ import { types } from '../types/types';
 
 const initialState = {
     clientes: [{
+        _id: "",
         idRegistro: 1,
         cuit: 22123456788,
         razonSocial: "",
@@ -12,7 +13,7 @@ const initialState = {
     
 };
 
-export const usuariosReducer = ( state = initialState, action ) => {
+export const clientesReducer = ( state = initialState, action ) => {
 
     switch ( action.type ) {
 

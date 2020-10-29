@@ -70,3 +70,51 @@ export const clienteStartDelete = () => {
     }
 }
 
+
+export const clienteStartAddNew = ( cliente ) => {
+    return async( dispatch, getState ) => {
+
+        //const { uid, name } = getState().auth;
+
+        try {
+            const resp = await fetchConToken('cliente/new', cliente, 'POST');
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( clienteAddNew( cliente ) );
+                Swal.fire(`Cliente creado con exito!`, '', 'success');
+                //setInterval(function(){ window.location.reload(); }, 1000);
+                dispatch( clienteStartLoading());
+            }
+            else {
+            Swal.fire('Error', body.msg, 'error');
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const clienteStartUpdate = ( cliente ) => {
+    return async(dispatch) => {
+
+        try {
+            const resp = await fetchConToken(`cliente/modify/${ cliente.idRegistro }`, cliente, 'PUT' );
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( clienteUpdated( cliente ) );
+                Swal.fire(`Cliente modificado con exito!`, '', 'success');
+            } else {
+                Swal.fire('Error', body.msg, 'error');
+            }
+
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+

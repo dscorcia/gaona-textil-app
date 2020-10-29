@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../../actions/ui';
-import { usuarioClearActiveUsuario, usuarioStartUpdate, usuarioStartAddNew } from '../../../actions/usuarios';
+import { clienteClearActiveCliente, clienteStartUpdate, clienteStartAddNew } from '../../../actions/clientes';
 
 const customStyles = {
     content : {
@@ -11,45 +11,39 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
+      height                : 'auto',
       transform             : 'translate(-50%, -50%)'
     }
   };
   Modal.setAppElement('#root');
 
-  const initUsuario = {
-    name: '',
-    nombre: '',
-    apellido: '',
-    dni: 0,
-    perfil: '',
-    //password: ''
+
+const initCliente = {
+    //idRegistro: "",
+    cuit: 22123456788,
+    razonSocial: "",
+    nombre: "",
+    telefono: 12345678
 
 }
 
-export const UsuariosModal = () => {
+export const ClientesModal = () => {
 
     const { modalOpen } = useSelector( state => state.ui );
-    const { activeUsuario } = useSelector( state => state.usuarios );
+    const { activeCliente } = useSelector( state => state.clientes );
     const dispatch = useDispatch();
 
-    const [formValues, setFormValues] = useState( initUsuario );
+    const [formValues, setFormValues] = useState( initCliente );
 
-    const { name, nombre, apellido, dni, perfil } = formValues;
-
-
-
-    //const [ usuarioValid, setUsuarioValid ] = useState(true);
-
-    //const [ passValid, setPassValid ] = useState(true);
-
+    const { cuit, razonSocial, nombre, telefono } = formValues;
 
     useEffect(() => {
-        if ( activeUsuario ) {
-            setFormValues( activeUsuario );
+        if ( activeCliente ) {
+            setFormValues( activeCliente );
         } else {
-            setFormValues( initUsuario );
+            setFormValues( initCliente );
         }
-    }, [activeUsuario, setFormValues])
+    }, [activeCliente, setFormValues])
 
 
     const handleInputChange = ({ target }) => {
@@ -62,19 +56,18 @@ export const UsuariosModal = () => {
     const closeModal = () => {
         // TODO: cerrar el modal
         dispatch( uiCloseModal() );
-        dispatch( usuarioClearActiveUsuario() );
-        setFormValues( initUsuario );
+        dispatch( clienteClearActiveCliente() );
+        setFormValues( initCliente );
     }
-
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
-       if ( activeUsuario ) {
-            dispatch( usuarioStartUpdate( formValues ) );
+       if ( activeCliente ) {
+            dispatch( clienteStartUpdate( formValues ) );
         } 
         else {
-            dispatch( usuarioStartAddNew(formValues) );
+            dispatch( clienteStartAddNew(formValues) );
         }
         closeModal();
     }
@@ -88,62 +81,52 @@ export const UsuariosModal = () => {
         className="modal"
         overlayClassName="modal-fondo"
         >
-          <h1> Nuevo usuario </h1>
+          <h1> Nuevo Cliente </h1>
             <hr />
             <form className="container" 
                 onSubmit={ handleSubmitForm }>
+               
 
                 <div className="form-group">
-                    <label>Usuario</label>
-                    <input 
-                        className="form-control"
-                        placeholder="Usuario"
-                        name="name"
-                        autoComplete="off"
-                        value={ name || ""}
-                        onChange={ handleInputChange }
-                    />
-                </div>
-                <div className="form-group">
-                <label>Nombre</label>
+                <label>CUIT</label>
                     <input 
                         className="form-control" 
-                        placeholder="Nombre"
+                        placeholder="cuit"
                         autoComplete="off"
-                        name="nombre"
-                        value={ nombre || "" }
+                        name="cuit"
+                        value={ cuit || "" }
                         onChange={ handleInputChange }
                     />
                 </div>
                 
                 <div className="form-group">
-                    <label>Apellido</label>
+                    <label>Razon Social</label>
                     <input 
                         className="form-control" 
-                        placeholder="Apellido"
+                        placeholder="Razon Social"
                         autoComplete="off"
-                        name="apellido"
-                        value={ apellido || "" }
+                        name="razonSocial"
+                        value={ razonSocial || "" }
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
-                    <label>DNI</label>
+                    <label>Nombre</label>
                     <input 
                         className="form-control" 
-                        placeholder="DNI"
+                        placeholder="Nombre"
                         autoComplete="off"
-                        name="dni"
-                        value={ dni || ""}
+                        name="nombre"
+                        value={ nombre || ""}
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
-                    <label>Perfil</label>
+                    <label>Telefono</label>
                     <input 
                         className="form-control" 
-                        placeholder="Perfil"
+                        placeholder="Telefono"
                         autoComplete="off"
-                        name="perfil"
-                        value={ perfil || ""}
+                        name="telefono"
+                        value={ telefono || ""}
                         onChange={ handleInputChange } />
                 </div>
             
@@ -161,4 +144,6 @@ export const UsuariosModal = () => {
 
       
     )
+
+
 }

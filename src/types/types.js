@@ -23,7 +23,7 @@ export const types = {
 
     clienteSetActive: '[cliente] Set Active',
     clienteAddNew: '[cliente] Add new',
-    clienteClearActiveUsuario: '[cliente] Clear active cliente',
+    clienteClearActiveCliente: '[cliente] Clear active cliente',
     clienteUpdated: '[cliente] Cliente updated',
     clienteDeleted: '[cliente] Cliente deleted',
     clienteLoaded: '[cliente] Cliente loaded',
