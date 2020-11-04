@@ -11,7 +11,7 @@ import { LandingHome } from '../components/LandingHome';
 import { Login } from '../components/Login';
 import { startChecking } from '../actions/auth';
 import { Clientes } from '../components/modulos/clientes/Clientes';
-import { Ventas } from '../components/modulos/Ventas';
+import { Ventas } from '../components/modulos/ventas/Ventas';
 import { Stock } from '../components/modulos/Stock';
 import { Usuarios } from '../components/modulos/usuarios/Usuarios';
 import { PublicRoute } from './PublicRoute';

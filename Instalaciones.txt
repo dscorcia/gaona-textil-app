@@ -6,3 +6,5 @@ npm install react-redux redux redux-thunk
 npm install sweetalert2
 
 npm i react-modal
+
+npm i moment

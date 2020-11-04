@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from '../Navbar';
+import { Navbar } from '../../Navbar';
 
 export const Ventas = () => {
     return (
@@ -39,7 +39,7 @@ export const Ventas = () => {
                             <button className="btn btn-danger mr-2">
                                 <i className="fas fa-trash-alt"></i>
                             </button>
-                            <button className="btn btn-success">
+                            <button className="btn btn-primary">
                                 <i className="fas fa-file-alt mr-2"></i>
                                 Ver detalle
                             </button>

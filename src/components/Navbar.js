@@ -49,9 +49,7 @@ export const Navbar = () => {
                     <li className="nav-item">
                         <a className="nav-link" href="/remitos">Remitos</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/facturas">Facturas</a>
-                    </li>
+                    
                 </ul>
 
                 <button className="btn btn-outline-success my-2 my-sm-0 mr-2">

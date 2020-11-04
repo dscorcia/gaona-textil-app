@@ -28,4 +28,13 @@ export const types = {
     clienteDeleted: '[cliente] Cliente deleted',
     clienteLoaded: '[cliente] Cliente loaded',
 
+    ventaSetActive: '[venta] Set Active',
+    ventaAddNew: '[venta] Add new',
+    ventaClearActiveVenta: '[venta] Clear active venta',
+    ventaUpdated: '[venta] Venta updated',
+    ventaDeleted: '[venta] Venta deleted',
+    ventaLoaded: '[venta] Venta loaded',
+
+
+
 }
