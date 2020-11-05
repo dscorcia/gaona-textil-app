@@ -4,7 +4,7 @@ import moment from 'moment';
 const initialState = {
     ventas: [{
         remitoVenta: 0,
-        fecha: moment().toDate(),
+        fecha: new Date().getTime(),
         cliente: "",
         articulos: [],
         subtotalArt: 0,

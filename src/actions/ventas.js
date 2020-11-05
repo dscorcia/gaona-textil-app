@@ -2,7 +2,7 @@ import { fetchConToken } from "../helpers/fetch";
 import { types } from "../types/types";
 import Swal from 'sweetalert2';
 
-export const ventasAddNew = (venta) => ({
+export const ventaAddNew = (venta) => ({
     type: types.ventaAddNew,
     payload: venta
 });

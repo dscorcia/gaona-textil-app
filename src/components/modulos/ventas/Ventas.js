@@ -1,7 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Navbar } from '../../Navbar';
+import { uiOpenModal } from '../../../actions/ui';
+import { ventaStartLoading, ventaSetActive, ventaStartDelete } from '../../../actions/ventas';
+import { VentasModal } from '../ventas/VentasModal';
+
 
 export const Ventas = () => {
+
+    const dispatch = useDispatch();
+    const { ventas, activeVenta } = useSelector( state => state.ventas );
+
+    useEffect(() => {
+        dispatch( ventaStartLoading() );
+        
+    }, [ dispatch ]);
+
+    const onOpenModal = (e) => {
+        dispatch( uiOpenModal() );
+    }
+
+    function onModifyVenta(venta){
+
+        dispatch( ventaSetActive(venta ) );
+        dispatch( uiOpenModal() );
+    }
+
+    function onDeleteVenta(venta){
+        dispatch( ventaSetActive(venta) );
+        dispatch( ventaStartDelete() );
+    }
+
     return (
         <div>
             <Navbar/>
@@ -12,7 +41,7 @@ export const Ventas = () => {
             <h3>Ventas</h3>
         
             <div className="bot-sum">
-                <button className="btn btn-success fab">
+                <button className="btn btn-success fab" onClick={ onOpenModal }>
                     <i className="fas fa-plus"></i>
                 </button>
             </div>
@@ -20,7 +49,7 @@ export const Ventas = () => {
             <table className="table">
             <thead className="thead-light">
                 <tr>
-                    <th scope="col">Transaccion</th>
+                    <th scope="col">Remito Venta</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Cliente</th>
                     <th scope="col">Acciones</th>
@@ -28,63 +57,41 @@ export const Ventas = () => {
             </thead>
 
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>
-                            <button className="btn btn-info mr-2">
-                                <i className="fas fa-edit"></i>
-                            </button>
-                            <button className="btn btn-danger mr-2">
-                                <i className="fas fa-trash-alt"></i>
-                            </button>
-                            <button className="btn btn-primary">
-                                <i className="fas fa-file-alt mr-2"></i>
-                                Ver detalle
-                            </button>
-                        </td>
-                        
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>
-                            <button className="btn btn-info mr-2">
-                                <i className="fas fa-edit"></i>
-                            </button>
-                            <button className="btn btn-danger mr-2">
-                                <i className="fas fa-trash-alt"></i>
-                            </button>
-                            <button className="btn btn-success">
-                                <i className="fas fa-file-alt mr-2"></i>
-                                Ver detalle
-                            </button>
-                        </td>
-                    </tr>
-                <tr>
-                    <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>
-                            <button className="btn btn-info mr-2">
-                                <i className="fas fa-edit"></i>
-                            </button>
-                            <button className="btn btn-danger mr-2">
-                                <i className="fas fa-trash-alt"></i>
-                            </button>
-                            <button className="btn btn-success">
-                                <i className="fas fa-file-alt mr-2"></i>
-                                Ver detalle
-                            </button>
-                        </td>
-                </tr>
+                {
+                    ventas.map ( (venta) => {
+                        return(
+                            <tr key= {venta.remitoVenta}>
+                                
+                                <td>{ venta.remitoVenta }</td>
+                                <td>{ venta.fecha }</td>
+                                <td>{ venta.cliente }</td>
+                               
+                                <td>
+                                    <button className="btn btn-info mr-2" onClick={ ()=> onModifyVenta(venta)}>
+                                        <i className="fas fa-edit"></i>
+                                    </button>
+                                    <button className="btn btn-danger mr-2" onClick={ ()=> onDeleteVenta(venta)}>
+                                        <i className="fas fa-trash-alt"></i>
+                                    </button>
+                                    <button className="btn btn-primary">
+                                        <i className="fas fa-file-alt mr-2"></i>
+                                        Ver detalle
+                                    </button>
+                                </td>
+                        </tr>
+
+                        )
+                    })
+                }
+
+               
+                
             </tbody>
 
         </table>
             
         </div>
+        <VentasModal />
         </div>
     )
 }
