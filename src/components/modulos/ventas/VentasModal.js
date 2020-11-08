@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../../actions/ui';
-import moment from 'moment';
 import { ventaClearActiveVenta, ventaStartUpdate, ventaStartAddNew } from '../../../actions/ventas';
 
 
@@ -20,9 +19,9 @@ const customStyles = {
   Modal.setAppElement('#root');
 
   const initVenta = {
-    remitoVenta: 0,
+    remitoVenta: '',
     fecha: new Date().getTime(),
-    cliente: "",
+    cliente: '',
     articulos: [],
     subtotalArt: 0,
     total: 0
@@ -87,14 +86,14 @@ export const VentasModal = () => {
                 onSubmit={ handleSubmitForm }>
                
 
-                <div className="form-group">
-                <label>Remito de Venta</label>
+               <div className="form-group">
+                    <label>Remito Venta</label>
                     <input 
-                        className="form-control" 
-                        placeholder="remito-venta"
+                        className="form-control"
+                        placeholder="Remito"
+                        name="remitoVenta"
                         autoComplete="off"
-                        name="remitoventa"
-                        value={ remitoVenta || "" }
+                        value={ remitoVenta || ""}
                         onChange={ handleInputChange }
                     />
                 </div>
@@ -136,7 +135,7 @@ export const VentasModal = () => {
                         className="form-control" 
                         placeholder="Subtotal"
                         autoComplete="off"
-                        name="subtotal"
+                        name="subtotalArt"
                         value={ subtotalArt || ""}
                         onChange={ handleInputChange } />
                 </div>

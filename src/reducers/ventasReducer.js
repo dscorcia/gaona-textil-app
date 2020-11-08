@@ -1,9 +1,8 @@
 import { types } from '../types/types';
-import moment from 'moment';
 
 const initialState = {
     ventas: [{
-        remitoVenta: 0,
+        remitoVenta: "",
         fecha: new Date().getTime(),
         cliente: "",
         articulos: [],
