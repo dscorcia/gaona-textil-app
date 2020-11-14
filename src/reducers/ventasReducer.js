@@ -5,7 +5,7 @@ const initialState = {
         remitoVenta: "",
         fecha: new Date().getTime(),
         cliente: "",
-        articulos: [],
+        Articulos: [{}],
         subtotalArt: 0,
         total: 0
     }],
@@ -14,7 +14,7 @@ const initialState = {
         remitoVenta: "",
         fecha: new Date().getTime(),
         cliente: "",
-        articulos: [],
+        Articulos: [{}],
         subtotalArt: 0,
         total: 0
     }]

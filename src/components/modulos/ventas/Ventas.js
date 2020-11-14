@@ -17,6 +17,7 @@ export const Ventas = ( {history} ) => {
         
     }, [ dispatch ]);
 
+
     const onOpenModal = (e) => {
         dispatch( uiOpenModal() );
     }
