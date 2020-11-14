@@ -34,6 +34,7 @@ export const types = {
     ventaUpdated: '[venta] Venta updated',
     ventaDeleted: '[venta] Venta deleted',
     ventaLoaded: '[venta] Venta loaded',
+    ventaLoadedOne: '[venta] Venta loaded one',
 
 
 

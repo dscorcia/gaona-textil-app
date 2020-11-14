@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar } from '../../Navbar';
 import { uiOpenModal } from '../../../actions/ui';
-import { ventaStartLoading, ventaSetActive, ventaStartDelete } from '../../../actions/ventas';
+import { ventaStartLoading, ventaSetActive, ventaStartDelete, ventaGetOne } from '../../../actions/ventas';
 import { VentasModal } from '../ventas/VentasModal';
+import { Link, Redirect } from 'react-router-dom';
 
 
-export const Ventas = () => {
+export const Ventas = ( {history} ) => {
 
     const dispatch = useDispatch();
     const { ventas, activeVenta } = useSelector( state => state.ventas );
@@ -20,6 +21,12 @@ export const Ventas = () => {
         dispatch( uiOpenModal() );
     }
 
+    function onDetailVenta(venta) {
+        //dispatch( ventaSetActive(venta ) );
+        dispatch(ventaGetOne(venta.remitoVenta));
+        history.push(`/ventas/detalle/${venta.remitoVenta}`);
+    }
+
     function onModifyVenta(venta){
 
         dispatch( ventaSetActive(venta ) );
@@ -30,6 +37,7 @@ export const Ventas = () => {
         dispatch( ventaSetActive(venta) );
         dispatch( ventaStartDelete() );
     }
+    
 
     return (
         <div>
@@ -73,7 +81,8 @@ export const Ventas = () => {
                                     <button className="btn btn-danger mr-2" onClick={ ()=> onDeleteVenta(venta)}>
                                         <i className="fas fa-trash-alt"></i>
                                     </button>
-                                    <button className="btn btn-primary">
+
+                                    <button className="btn btn-primary mr-2" onClick={ ()=> onDetailVenta(venta)}>
                                         <i className="fas fa-file-alt mr-2"></i>
                                         Ver detalle
                                     </button>

@@ -18,6 +18,7 @@ import { PublicRoute } from './PublicRoute';
 import { PrivateRoute } from './PrivateRoute';
 import { Remitos } from '../components/modulos/Remitos';
 import { Facturas } from '../components/modulos/Facturas';
+import { DetalleVenta } from '../components/modulos/ventas/DetalleVenta';
 
 
 export const AppRouter = () => {
@@ -61,6 +62,12 @@ export const AppRouter = () => {
                         exact 
                         path="/ventas" 
                         component={ Ventas } 
+                        isAuthenticated={ !!uid }
+                    />
+                    <PrivateRoute 
+                        exact 
+                        path="/ventas/detalle/:remitoVenta" 
+                        component={ DetalleVenta } 
                         isAuthenticated={ !!uid }
                     />
                     <PrivateRoute 

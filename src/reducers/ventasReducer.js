@@ -9,8 +9,15 @@ const initialState = {
         subtotalArt: 0,
         total: 0
     }],
-    activeVenta: null
-    
+    activeVenta: null,
+    venta: [{
+        remitoVenta: "",
+        fecha: new Date().getTime(),
+        cliente: "",
+        articulos: [],
+        subtotalArt: 0,
+        total: 0
+    }]
 };
 
 export const ventasReducer = ( state = initialState, action ) => {
@@ -21,6 +28,12 @@ export const ventasReducer = ( state = initialState, action ) => {
             return {
                 ...state,
                 ventas: [ ...action.payload ]
+            }
+        
+        case types.ventaLoadedOne:
+            return {
+                ...state,
+                venta: action.payload
             }
         
         case types.ventaSetActive:
