@@ -10,14 +10,14 @@ const initialState = {
         total: 0
     }],
     activeVenta: null,
-    venta: [{
+    venta: {
         remitoVenta: "",
         fecha: new Date().getTime(),
         cliente: "",
         Articulos: [{}],
         subtotalArt: 0,
         total: 0
-    }]
+    }
 };
 
 export const ventasReducer = ( state = initialState, action ) => {

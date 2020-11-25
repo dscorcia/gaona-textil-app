@@ -18,9 +18,6 @@ export const DetalleVenta = () => {
     
     const { Articulos }  = venta;
 
-    console.log(Articulos);
-    
-
 
         return (
             <div>
@@ -45,7 +42,18 @@ export const DetalleVenta = () => {
                                     <td> { remitoVenta} </td>
                                     <td> { venta.fecha } </td>
                                     <td> { venta.cliente } </td>
-                                    <td> 
+                                    <td> {
+                                        Articulos.map( (art, i) =>{
+                                            return(
+                                                <li key={i}>{ 
+                                                    ` Articulo: ${art.idArticulo} 
+                                                    - Color: ${art.color} 
+                                                    - Descripcion: ${art.descripcion} 
+                                                    - Cantidad: ${art.cantidad} 
+                                                    - Precio KG: ${art.precioKg}
+                                                    - Subtotal: ${art.subtotalArt} ` }</li>
+                                            )
+                                        })}
                                         
                                     </td>
                                     <td> { venta.total } </td>
