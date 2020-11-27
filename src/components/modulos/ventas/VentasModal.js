@@ -120,24 +120,11 @@ export const VentasModal = () => {
                 </div>
                 <div className="form-group">
                     <label>Articulos</label>
-                    <input 
-                        className="form-control" 
-                        placeholder="Articulos"
-                        autoComplete="off"
-                        name="articulos"
-                        value={ articulos || ""}
-                        onChange={ handleInputChange } />
-                </div>
-
-                <div className="form-group">
-                    <label>Subtotal</label>
-                    <input 
-                        className="form-control" 
-                        placeholder="Subtotal"
-                        autoComplete="off"
-                        name="subtotalArt"
-                        value={ subtotalArt || ""}
-                        onChange={ handleInputChange } />
+                    <br></br>
+                    <button className="btn btn-success">
+                        <i className="fas fa-plus mr-2"></i>
+                        Agregar Articulo
+                    </button>
                 </div>
 
                 <div className="form-group">

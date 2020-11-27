@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal, uiOpenPassModal } from '../../../actions/ui';
 import { usuarioStartLoading, usuarioSetActive, usuarioStartDelete } from '../../../actions/usuarios';
 import { Navbar } from '../../Navbar';
-import { UsuariosModal } from '../usuarios/UsuariosModal';
+import { UsuariosModal } from './UsuariosModal';
 import { PassModal } from '../usuarios/PassModal';
 
 
