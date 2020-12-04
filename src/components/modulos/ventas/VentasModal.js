@@ -23,8 +23,16 @@ const customStyles = {
     fecha: new Date().getTime(),
     cliente: '',
     articulos: [],
-    subtotalArt: 0,
     total: 0
+}
+
+const initArticulo = {
+    idArticulo: '',
+    descripcion: '',
+    color: '',
+    cantidad: 0,
+    precioKg: 0,
+    subtotalArt: 0,
 }
 
 export const VentasModal = () => {
@@ -33,22 +41,31 @@ export const VentasModal = () => {
     const { activeVenta } = useSelector( state => state.ventas );
     const dispatch = useDispatch();
 
-    const [formValues, setFormValues] = useState( initVenta );
+    const [formValuesVenta, setFormValuesVenta] = useState( initVenta );
+    const { remitoVenta, fecha, cliente, articulos, total } = formValuesVenta;
 
-    const { remitoVenta, fecha, cliente, articulos, subtotalArt, total } = formValues;
+    const [formValuesArt, setFormValuesArt] = useState( initArticulo );
+    const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt } = formValuesArt;
 
     useEffect(() => {
         if ( activeVenta ) {
-            setFormValues( activeVenta );
+            setFormValuesVenta( activeVenta );
         } else {
-            setFormValues( initVenta );
+            setFormValuesVenta( initVenta );
         }
-    }, [activeVenta, setFormValues])
+    }, [activeVenta, setFormValuesVenta])
 
 
     const handleInputChange = ({ target }) => {
-        setFormValues({
-            ...formValues,
+        setFormValuesVenta({
+            ...formValuesVenta,
+            [target.name]: target.value
+        });
+    }
+
+    const handleInputChangeArt = ({ target }) => {
+        setFormValuesArt({
+            ...formValuesArt,
             [target.name]: target.value
         });
     }
@@ -56,20 +73,131 @@ export const VentasModal = () => {
     const closeModal = () => {
         dispatch( uiCloseModal() );
         dispatch( ventaClearActiveVenta() );
-        setFormValues( initVenta );
+        setFormValuesVenta( initVenta );
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
        if ( activeVenta ) {
-            dispatch( ventaStartUpdate( formValues ) );
+            dispatch( ventaStartUpdate( formValuesVenta ) );
         } 
         else {
-            dispatch( ventaStartAddNew(formValues) );
+            dispatch( ventaStartAddNew(formValuesVenta) );
         }
         closeModal();
     }
+
+    const handleSubmitFormArt = (e) => {
+        e.preventDefault();
+
+       console.log("entro!");
+        closeModal();
+    }
+
+
+     const renderModalArt = () => {
+         return(
+            <Modal
+            isOpen={ modalOpen }
+            onRequestClose={ closeModal }
+            style={ customStyles }
+            closeTimeoutMS={ 200 }
+            className="modal"
+            overlayClassName="modal-fondo"
+            >
+                <h1> Articulos </h1>
+                <hr />
+                <form className="container" 
+                      onSubmit={ handleSubmitFormArt }>
+                    
+                    <div className="form-group">
+                        <label> Id Articulo </label>
+                        <input 
+                            className="form-control"
+                            placeholder="ID Articulo"
+                            name="idArticulo"
+                            autoComplete="off"
+                            value={ idArticulo || ""}
+                            onChange={ handleInputChangeArt }
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Descripcion </label>
+                        <input 
+                            className="form-control"
+                            placeholder="Descripcion"
+                            name="descripcion"
+                            autoComplete="off"
+                            value={ descripcion || ""}
+                            onChange={ handleInputChangeArt }
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Color </label>
+                        <input 
+                            className="form-control"
+                            placeholder="Color"
+                            name="color"
+                            autoComplete="off"
+                            value={ color || ""}
+                            onChange={ handleInputChangeArt }
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Cantidad </label>
+                        <input 
+                            className="form-control"
+                            placeholder="Cantidad"
+                            name="cantidad"
+                            autoComplete="off"
+                            value={ cantidad || ""}
+                            onChange={ handleInputChangeArt }
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Precio KG </label>
+                        <input 
+                            className="form-control"
+                            placeholder="Precio KG"
+                            name="preciokg"
+                            autoComplete="off"
+                            value={ precioKg || ""}
+                            onChange={ handleInputChangeArt }
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label> Subtotal Articulo </label>
+                        <input 
+                            className="form-control"
+                            placeholder="SubtotalArt"
+                            name="subtotalart"
+                            autoComplete="off"
+                            value={ subtotalArt || ""}
+                            onChange={ handleInputChangeArt }
+                        />
+                    </div>
+                    <button
+                        type="submit"
+                        className="btn btn-info btn-block"
+                    >
+                        <i className="far fa-save"></i>
+                        <span> Guardar</span>
+                    </button>
+
+
+                </form>
+
+            </Modal>
+
+         )
+     }
+
 
     return (
         <Modal
@@ -121,7 +249,7 @@ export const VentasModal = () => {
                 <div className="form-group">
                     <label>Articulos</label>
                     <br></br>
-                    <button className="btn btn-success">
+                    <button className="btn btn-success" onClick={ ()=> renderModalArt()} >
                         <i className="fas fa-plus mr-2"></i>
                         Agregar Articulo
                     </button>
