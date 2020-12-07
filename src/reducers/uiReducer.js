@@ -33,6 +33,17 @@ export const uiReducer = ( state = initialState, action ) => {
                 ...state,
                 modalPassOpen: false
             }
+            case types.uiOpenModalArt:
+                return {
+                    ...state,
+                    modalArtOpen: true
+                }
+    
+            case types.uiCloseModalArt:
+                return {
+                    ...state,
+                    modalArtOpen: false
+                }
     
         default:
             return state;

@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../../actions/ui';
 import { ventaClearActiveVenta, ventaStartUpdate, ventaStartAddNew } from '../../../actions/ventas';
 
-
 const customStyles = {
     content : {
       top                   : '50%',
@@ -13,6 +12,7 @@ const customStyles = {
       bottom                : 'auto',
       marginRight           : '-50%',
       height                : 'auto',
+      maxWidth             : '760px',                
       transform             : 'translate(-50%, -50%)'
     }
   };
@@ -40,25 +40,29 @@ export const VentasModal = () => {
     const { modalOpen } = useSelector( state => state.ui );
     const { activeVenta } = useSelector( state => state.ventas );
     const dispatch = useDispatch();
-
-    const [formValuesVenta, setFormValuesVenta] = useState( initVenta );
-    const { remitoVenta, fecha, cliente, articulos, total } = formValuesVenta;
+ 
+    const [formValues, setFormValues] = useState( initVenta );
+    const { remitoVenta, fecha, cliente, articulos, total } = formValues;
 
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
-    const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt } = formValuesArt;
+    const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt} = formValuesArt;
+
+    //const articulosAux = [];
+    const [articulosAux, setArticulosAux] = useState([]);
 
     useEffect(() => {
         if ( activeVenta ) {
-            setFormValuesVenta( activeVenta );
+            setFormValues( activeVenta );
         } else {
-            setFormValuesVenta( initVenta );
+            setFormValues( initVenta );
         }
-    }, [activeVenta, setFormValuesVenta])
+    }, [activeVenta, setFormValues])
+    
 
 
     const handleInputChange = ({ target }) => {
-        setFormValuesVenta({
-            ...formValuesVenta,
+        setFormValues({
+            ...formValues,
             [target.name]: target.value
         });
     }
@@ -70,136 +74,47 @@ export const VentasModal = () => {
         });
     }
 
+    const onAddArticulo = (e) => {
+        e.preventDefault();
+        //dispatch( uiOpenModalArt() );
+        const item = {
+            idArticulo,
+            descripcion,
+            color,
+            cantidad,
+            precioKg,
+            subtotalArt,
+        }
+    
+        setArticulosAux( items =>[ ...items, item ]);
+        setFormValuesArt(initArticulo);
+        
+    }
+
     const closeModal = () => {
         dispatch( uiCloseModal() );
         dispatch( ventaClearActiveVenta() );
-        setFormValuesVenta( initVenta );
+        setFormValues( initVenta );
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
+        /**ACA ME QUEDE. VER COMO ASIGNAR */
+        //articulos = articulosAux;
+        console.log(articulos);
 
        if ( activeVenta ) {
-            dispatch( ventaStartUpdate( formValuesVenta ) );
+            dispatch( ventaStartUpdate( formValues ) );
         } 
         else {
-            dispatch( ventaStartAddNew(formValuesVenta) );
+            dispatch( ventaStartAddNew(formValues) );
         }
         closeModal();
     }
 
-    const handleSubmitFormArt = (e) => {
-        e.preventDefault();
-
-       console.log("entro!");
-        closeModal();
-    }
-
-
-     const renderModalArt = () => {
-         return(
-            <Modal
-            isOpen={ modalOpen }
-            onRequestClose={ closeModal }
-            style={ customStyles }
-            closeTimeoutMS={ 200 }
-            className="modal"
-            overlayClassName="modal-fondo"
-            >
-                <h1> Articulos </h1>
-                <hr />
-                <form className="container" 
-                      onSubmit={ handleSubmitFormArt }>
-                    
-                    <div className="form-group">
-                        <label> Id Articulo </label>
-                        <input 
-                            className="form-control"
-                            placeholder="ID Articulo"
-                            name="idArticulo"
-                            autoComplete="off"
-                            value={ idArticulo || ""}
-                            onChange={ handleInputChangeArt }
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label> Descripcion </label>
-                        <input 
-                            className="form-control"
-                            placeholder="Descripcion"
-                            name="descripcion"
-                            autoComplete="off"
-                            value={ descripcion || ""}
-                            onChange={ handleInputChangeArt }
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label> Color </label>
-                        <input 
-                            className="form-control"
-                            placeholder="Color"
-                            name="color"
-                            autoComplete="off"
-                            value={ color || ""}
-                            onChange={ handleInputChangeArt }
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label> Cantidad </label>
-                        <input 
-                            className="form-control"
-                            placeholder="Cantidad"
-                            name="cantidad"
-                            autoComplete="off"
-                            value={ cantidad || ""}
-                            onChange={ handleInputChangeArt }
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label> Precio KG </label>
-                        <input 
-                            className="form-control"
-                            placeholder="Precio KG"
-                            name="preciokg"
-                            autoComplete="off"
-                            value={ precioKg || ""}
-                            onChange={ handleInputChangeArt }
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label> Subtotal Articulo </label>
-                        <input 
-                            className="form-control"
-                            placeholder="SubtotalArt"
-                            name="subtotalart"
-                            autoComplete="off"
-                            value={ subtotalArt || ""}
-                            onChange={ handleInputChangeArt }
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="btn btn-info btn-block"
-                    >
-                        <i className="far fa-save"></i>
-                        <span> Guardar</span>
-                    </button>
-
-
-                </form>
-
-            </Modal>
-
-         )
-     }
-
 
     return (
+        <div>
         <Modal
         isOpen={ modalOpen }
         onRequestClose={ closeModal }
@@ -249,11 +164,92 @@ export const VentasModal = () => {
                 <div className="form-group">
                     <label>Articulos</label>
                     <br></br>
-                    <button className="btn btn-success" onClick={ ()=> renderModalArt()} >
-                        <i className="fas fa-plus mr-2"></i>
-                        Agregar Articulo
-                    </button>
+            
+                    { articulosAux.length ? (
+                        articulosAux.map( (art) => {
+                        return( <li key={ art.idArticulo }> 
+                                        ID Articulo: { art.idArticulo } - 
+                                        Descripcion: { art.descripcion } - 
+                                        Color: { art.color } -
+                                        Cantidad: { art.cantidad } -
+                                        Precio KG: { art.precioKg } - 
+                                        Subtotal: { art.subtotalArt }  </li> )
+                            
+                        }) 
+                    ): (
+                        <span> Aun no se cargaron articulos </span> )
+                    }
+
+                  
                 </div>
+
+                
+                <div>
+                    <div className="form-row mb-2">
+                        <div className="col">
+                            <input 
+                                className="form-control" 
+                                placeholder="ID Articulo"
+                                autoComplete="off"
+                                name="idArticulo"
+                                value={ idArticulo || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+                        <div className="col">
+                            <input 
+                                className="form-control" 
+                                placeholder="Descripcion"
+                                autoComplete="off"
+                                name="descripcion"
+                                value={ descripcion || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+                        <div className="col">
+                            <input
+                                className="form-control" 
+                                placeholder="Color"
+                                autoComplete="off"
+                                name="color"
+                                value={ color || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+                    </div>
+                    <div className="form-row mb-2">
+                        <div className="col">
+                            <input
+                                className="form-control" 
+                                placeholder="Cantidad"
+                                autoComplete="off"
+                                name="cantidad"
+                                value={ cantidad || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+                        <div className="col">
+                            <input
+                                className="form-control" 
+                                placeholder="Precio KG"
+                                autoComplete="off"
+                                name="precioKg"
+                                value={ precioKg || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+                        <div className="col">
+                            <input
+                                className="form-control" 
+                                placeholder="Subtotal"
+                                autoComplete="off"
+                                name="subtotalArt"
+                                value={ subtotalArt || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+                        <div className="col">
+                            <button className="btn btn-success" onClick={ onAddArticulo }>
+                                <i className="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
 
                 <div className="form-group">
                     <label>Total</label>
@@ -277,7 +273,10 @@ export const VentasModal = () => {
             </form> 
       
       </Modal>
+     
+    </div>
 
+    
       
     )
 
