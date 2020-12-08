@@ -16,7 +16,7 @@ export const DetalleVenta = () => {
     }, [ dispatch ]);
 
     
-    const { Articulos }  = venta;
+    const { articulos }  = venta;
 
 
         return (
@@ -43,7 +43,7 @@ export const DetalleVenta = () => {
                                     <td> { venta.fecha } </td>
                                     <td> { venta.cliente } </td>
                                     <td> {
-                                        Articulos.map( (art, i) =>{
+                                        articulos.map( (art, i) =>{
                                             return(
                                                 <li key={i}>{ 
                                                     ` Articulo: ${art.idArticulo} 

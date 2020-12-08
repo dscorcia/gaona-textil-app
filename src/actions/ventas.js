@@ -78,11 +78,12 @@ export const ventaStartAddNew = ( venta ) => {
     return async( dispatch, getState ) => {
 
         //const { uid, name } = getState().auth;
+        //console.log(venta);
 
         try {
             const resp = await fetchConToken('venta/new', venta, 'POST');
             const body = await resp.json();
-
+            
             if ( body.ok ) {
                 dispatch( ventaAddNew( venta ) );
                 Swal.fire(`Venta creada con exito!`, '', 'success');

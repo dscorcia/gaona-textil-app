@@ -42,7 +42,8 @@ export const VentasModal = () => {
     const dispatch = useDispatch();
  
     const [formValues, setFormValues] = useState( initVenta );
-    const { remitoVenta, fecha, cliente, articulos, total } = formValues;
+    const { remitoVenta, fecha, articulos, cliente, total } = formValues;
+   // const [ articulos, setArticulos ] = useState( [] );
 
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
     const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt} = formValuesArt;
@@ -99,9 +100,24 @@ export const VentasModal = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        /**ACA ME QUEDE. VER COMO ASIGNAR */
-        //articulos = articulosAux;
+        console.log(articulosAux);
+        articulosAux.map( art => {
+
+           // articulos.push(art);
+            //setArticulos(...articulos, art);
+
+            setFormValues({
+                ...formValues,
+                articulos: articulos.push(art)
+            });
+            
+        });
+
+        
+        
         console.log(articulos);
+
+        console.log(formValues);
 
        if ( activeVenta ) {
             dispatch( ventaStartUpdate( formValues ) );
