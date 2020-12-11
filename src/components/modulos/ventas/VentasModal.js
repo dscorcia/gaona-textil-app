@@ -139,7 +139,7 @@ export const VentasModal = () => {
         className="modal"
         overlayClassName="modal-fondo"
         >
-          <h1> Nueva Venta </h1>
+          <h5> Nueva Venta </h5>
             <hr />
             <form className="container" 
                 onSubmit={ handleSubmitForm }>
@@ -182,8 +182,8 @@ export const VentasModal = () => {
                     <br></br>
             
                     { articulosAux.length ? (
-                        articulosAux.map( (art) => {
-                        return( <li key={ art.idArticulo }> 
+                        articulosAux.map( (art, i) => {
+                        return( <li className="li-art" key={ i }> 
                                         ID Articulo: { art.idArticulo } - 
                                         Descripcion: { art.descripcion } - 
                                         Color: { art.color } -
