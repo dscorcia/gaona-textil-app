@@ -181,8 +181,11 @@ export const VentasModal = () => {
                 <div className="form-group">
                     <label>Articulos</label>
                     <br></br>
-            
-                    { articulosAux.length ? (
+
+                    { !articulos.length ? (
+
+
+                     articulosAux.length ? (
                         articulosAux.map( (art, i) => {
                         return( <li className="li-art" key={ i }> 
                                         ID Articulo: { art.idArticulo } - 
@@ -195,7 +198,23 @@ export const VentasModal = () => {
                         }) 
                     ): (
                         <span> Aun no se cargaron articulos </span> )
+                    
+                    ) :
+                    ( 
+                        articulos.map( (art, i) => {
+                            return( <li className="li-art" key={ i }> 
+                                            ID Articulo: { art.idArticulo } - 
+                                            Descripcion: { art.descripcion } - 
+                                            Color: { art.color } -
+                                            Cantidad: { art.cantidad } -
+                                            Precio KG: { art.precioKg } - 
+                                            Subtotal: { art.subtotalArt }  </li> )
+                                
+                            })
+
+                    )
                     }
+                    
 
                   
                 </div>
