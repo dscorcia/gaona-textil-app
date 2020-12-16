@@ -84,11 +84,12 @@ export const VentasModal = () => {
             color,
             cantidad,
             precioKg,
-            subtotalArt,
+            subtotalArt : cantidad * precioKg,
         }
     
         setArticulosAux( items =>[ ...items, item ]);
         setFormValuesArt(initArticulo);
+        setFormValues({ ...formValues, total: total + item.subtotalArt });
         
     }
 
@@ -249,15 +250,7 @@ export const VentasModal = () => {
                                 value={ precioKg || ""}
                                 onChange={ handleInputChangeArt }/>
                         </div>
-                        <div className="col">
-                            <input
-                                className="form-control" 
-                                placeholder="Subtotal"
-                                autoComplete="off"
-                                name="subtotalArt"
-                                value={ subtotalArt || ""}
-                                onChange={ handleInputChangeArt }/>
-                        </div>
+                        
                         <div className="col">
                             <button className="btn btn-success" onClick={ onAddArticulo }>
                                 <i className="fas fa-plus"></i>
