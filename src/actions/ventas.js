@@ -101,6 +101,9 @@ export const ventaStartAddNew = ( venta ) => {
 }
 
 export const ventaStartUpdate = ( venta ) => {
+
+    console.log("actions upd");
+    console.log(venta);
     return async(dispatch) => {
 
         try {
@@ -122,14 +125,14 @@ export const ventaStartUpdate = ( venta ) => {
 
 
 export const ventaGetOne = ( id ) => {
-    console.log(id);
+    //console.log(id);
     return async (dispatch) =>{
         try {
             const resp = await fetchConToken( `venta/ventaUnica/${ id }`);
             const body = await resp.json();
-            console.log(body);
+            //console.log(body);
             const venta = body.ventas;
-            console.log(venta);
+           // console.log(venta);
             dispatch (ventaLoadedOne(venta));
 
         }catch (error){

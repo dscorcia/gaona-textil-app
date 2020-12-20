@@ -77,6 +77,13 @@ export const VentasModal = () => {
 
     const onAddArticulo = (e) => {
         e.preventDefault();
+
+        /*
+        if(articulos.length){
+            setArticulosAux(articulos);
+        }
+        console.log("antes");
+        console.log(articulosAux);
         //dispatch( uiOpenModalArt() );
         const item = {
             idArticulo,
@@ -89,6 +96,26 @@ export const VentasModal = () => {
     
         setArticulosAux( items =>[ ...items, item ]);
         setFormValuesArt(initArticulo);
+        console.log("desp");
+        console.log(articulosAux);
+        setFormValues({ ...formValues, total: total + item.subtotalArt });
+        */
+
+       const item = {
+        idArticulo,
+        descripcion,
+        color,
+        cantidad,
+        precioKg,
+        subtotalArt : cantidad * precioKg,
+        }
+
+        setFormValues({
+            ...formValues,
+            articulos: articulos.push(item)
+        });
+
+        setFormValuesArt(initArticulo);
         setFormValues({ ...formValues, total: total + item.subtotalArt });
         
     }
@@ -97,11 +124,13 @@ export const VentasModal = () => {
         dispatch( uiCloseModal() );
         dispatch( ventaClearActiveVenta() );
         setFormValues( initVenta );
+        setFormValuesArt( initArticulo );
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        console.log(articulosAux);
+        
+        /*
         articulosAux.map( art => {
 
            // articulos.push(art);
@@ -112,11 +141,11 @@ export const VentasModal = () => {
                 articulos: articulos.push(art)
             });
             
-        });
+        });*/
 
         
         
-        console.log(articulos);
+        //console.log(articulos);
 
         console.log(formValues);
 
@@ -182,11 +211,9 @@ export const VentasModal = () => {
                     <label>Articulos</label>
                     <br></br>
 
-                    { !articulos.length ? (
-
-
-                     articulosAux.length ? (
-                        articulosAux.map( (art, i) => {
+                    { 
+                        articulos.length ? (
+                        articulos.map( (art, i) => {
                         return( <li className="li-art" key={ i }> 
                                         ID Articulo: { art.idArticulo } - 
                                         Descripcion: { art.descripcion } - 
@@ -198,22 +225,9 @@ export const VentasModal = () => {
                         }) 
                     ): (
                         <span> Aun no se cargaron articulos </span> )
-                    
-                    ) :
-                    ( 
-                        articulos.map( (art, i) => {
-                            return( <li className="li-art" key={ i }> 
-                                            ID Articulo: { art.idArticulo } - 
-                                            Descripcion: { art.descripcion } - 
-                                            Color: { art.color } -
-                                            Cantidad: { art.cantidad } -
-                                            Precio KG: { art.precioKg } - 
-                                            Subtotal: { art.subtotalArt }  </li> )
-                                
-                            })
-
-                    )
                     }
+                
+                    
                     
 
                   
