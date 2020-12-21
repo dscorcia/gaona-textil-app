@@ -49,7 +49,7 @@ export const VentasModal = () => {
     const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt} = formValuesArt;
 
     //const articulosAux = [];
-    const [articulosAux, setArticulosAux] = useState([]);
+    //const [articulosAux, setArticulosAux] = useState([]);
 
     useEffect(() => {
         if ( activeVenta ) {
@@ -78,29 +78,6 @@ export const VentasModal = () => {
     const onAddArticulo = (e) => {
         e.preventDefault();
 
-        /*
-        if(articulos.length){
-            setArticulosAux(articulos);
-        }
-        console.log("antes");
-        console.log(articulosAux);
-        //dispatch( uiOpenModalArt() );
-        const item = {
-            idArticulo,
-            descripcion,
-            color,
-            cantidad,
-            precioKg,
-            subtotalArt : cantidad * precioKg,
-        }
-    
-        setArticulosAux( items =>[ ...items, item ]);
-        setFormValuesArt(initArticulo);
-        console.log("desp");
-        console.log(articulosAux);
-        setFormValues({ ...formValues, total: total + item.subtotalArt });
-        */
-
        const item = {
         idArticulo,
         descripcion,
@@ -120,6 +97,19 @@ export const VentasModal = () => {
         
     }
 
+    const onDeleteArticulo = (e,art) => {
+        e.preventDefault();
+
+        //console.log(index);
+      
+        setFormValues({
+            ...formValues,
+            articulos: articulos.filter( (articulo)=> articulo != art )
+        });
+    }
+
+
+
     const closeModal = () => {
         dispatch( uiCloseModal() );
         dispatch( ventaClearActiveVenta() );
@@ -129,23 +119,6 @@ export const VentasModal = () => {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        
-        /*
-        articulosAux.map( art => {
-
-           // articulos.push(art);
-            //setArticulos(...articulos, art);
-
-            setFormValues({
-                ...formValues,
-                articulos: articulos.push(art)
-            });
-            
-        });*/
-
-        
-        
-        //console.log(articulos);
 
         console.log(formValues);
 
@@ -220,16 +193,16 @@ export const VentasModal = () => {
                                         Color: { art.color } -
                                         Cantidad: { art.cantidad } -
                                         Precio KG: { art.precioKg } - 
-                                        Subtotal: { art.subtotalArt }  </li> )
+                                        Subtotal: { art.subtotalArt }
+                                        <button className="btn btn-danger bot-trash-modal mr-2 ml-2" onClick={ (e)=> onDeleteArticulo(e,art)}>
+                                            <i className="fas fa-trash-alt"></i>
+                                        </button>
+                                </li> )
                             
                         }) 
                     ): (
                         <span> Aun no se cargaron articulos </span> )
                     }
-                
-                    
-                    
-
                   
                 </div>
 

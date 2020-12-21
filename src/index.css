@@ -271,5 +271,15 @@ input[type=text]:placeholder {
   25px;
 }
 
+.bot-trash-modal {
+
+  text-align: right;
+  margin-bottom: 5px;
+  font-size: 6px;
+  padding:5px;
+  
+  
+}
+
 /* --------------- DIV ADD ART --------------- */
 
