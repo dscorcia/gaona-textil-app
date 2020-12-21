@@ -99,8 +99,6 @@ export const VentasModal = () => {
 
     const onDeleteArticulo = (e,art) => {
         e.preventDefault();
-
-        //console.log(index);
       
         setFormValues({
             ...formValues,
