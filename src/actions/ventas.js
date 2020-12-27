@@ -39,6 +39,8 @@ export const ventaStartLoading = () => {
         try {
             const resp = await fetchConToken( 'venta/ventas' );
             const body = await resp.json();
+            
+            //const ventas = prepareVentas( body.ventas );
 
             const ventas = body.ventas;
             console.log(ventas);
@@ -78,7 +80,7 @@ export const ventaStartAddNew = ( venta ) => {
     return async( dispatch, getState ) => {
 
         //const { uid, name } = getState().auth;
-        //console.log(venta);
+        console.log(venta);
 
         try {
             const resp = await fetchConToken('venta/new', venta, 'POST');
@@ -102,8 +104,6 @@ export const ventaStartAddNew = ( venta ) => {
 
 export const ventaStartUpdate = ( venta ) => {
 
-    console.log("actions upd");
-    console.log(venta);
     return async(dispatch) => {
 
         try {

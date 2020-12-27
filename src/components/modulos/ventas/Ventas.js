@@ -68,11 +68,13 @@ export const Ventas = ( {history} ) => {
             <tbody>
                 {
                     ventas.map ( (venta) => {
+
+                        
                         return(
                             <tr key= {venta.remitoVenta}>
                                 
                                 <td>{ venta.remitoVenta }</td>
-                                <td>{ venta.fecha }</td>
+                                <td>{ venta.fecha.toString() }</td>
                                 <td>{ venta.cliente }</td>
                                
                                 <td>

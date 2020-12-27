@@ -8,3 +8,5 @@ npm install sweetalert2
 npm i react-modal
 
 npm i moment
+
+npm i react-datetime-picker

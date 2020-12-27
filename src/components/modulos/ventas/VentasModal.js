@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../../actions/ui';
 import { ventaClearActiveVenta, ventaStartUpdate, ventaStartAddNew } from '../../../actions/ventas';
+import DateTimePicker from 'react-datetime-picker';
+
+
 
 const customStyles = {
     content : {
@@ -18,9 +22,12 @@ const customStyles = {
   };
   Modal.setAppElement('#root');
 
+  //const now = moment().minutes(0).seconds(0).add(1,'hours');
+
   const initVenta = {
     remitoVenta: '',
-    fecha: new Date().getTime(),
+    //fecha: now.toDate(),
+    fecha: new Date(),
     cliente: '',
     articulos: [],
     total: 0
@@ -40,16 +47,15 @@ export const VentasModal = () => {
     const { modalOpen } = useSelector( state => state.ui );
     const { activeVenta } = useSelector( state => state.ventas );
     const dispatch = useDispatch();
- 
+
+    const [ dateStart, setDateStart ] = useState( initArticulo.fecha );
+
     const [formValues, setFormValues] = useState( initVenta );
     const { remitoVenta, fecha, articulos, cliente, total } = formValues;
-   // const [ articulos, setArticulos ] = useState( [] );
 
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
     const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt} = formValuesArt;
 
-    //const articulosAux = [];
-    //const [articulosAux, setArticulosAux] = useState([]);
 
     useEffect(() => {
         if ( activeVenta ) {
@@ -73,6 +79,14 @@ export const VentasModal = () => {
             ...formValuesArt,
             [target.name]: target.value
         });
+    }
+
+    const handleStartDateChange = ( e ) => {
+        setDateStart( e );
+        setFormValues({
+            ...formValues,
+            fecha: e
+        })
     }
 
     const onAddArticulo = (e) => {
@@ -140,7 +154,7 @@ export const VentasModal = () => {
         className="modal"
         overlayClassName="modal-fondo"
         >
-          <h5> Nueva Venta </h5>
+          <h5> { (activeVenta)? 'Editar venta': 'Nueva venta' } </h5>
             <hr />
             <form className="container" 
                 onSubmit={ handleSubmitForm }>
@@ -157,17 +171,17 @@ export const VentasModal = () => {
                         onChange={ handleInputChange }
                     />
                 </div>
-                
+
                 <div className="form-group">
                     <label>Fecha</label>
-                    <input 
-                        className="form-control" 
-                        placeholder="Fecha"
-                        autoComplete="off"
-                        name="fecha"
-                        value={ fecha || "" }
-                        onChange={ handleInputChange } />
+                    <DateTimePicker
+                        onChange={ handleStartDateChange }
+                        value={ fecha }
+                        className="form-control"
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                    />
                 </div>
+
                 <div className="form-group">
                     <label>Cliente</label>
                     <input 

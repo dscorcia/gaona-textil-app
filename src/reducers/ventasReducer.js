@@ -1,9 +1,11 @@
 import { types } from '../types/types';
+import moment from 'moment';
 
 const initialState = {
     ventas: [{
         remitoVenta: "",
         fecha: new Date().getTime(),
+        //fecha: moment().minutes(0).seconds(0).add(1,'hours').toDate(),
         cliente: "",
         articulos: [{}],
         subtotalArt: 0,
