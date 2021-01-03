@@ -116,23 +116,25 @@ export const VentasModal = () => {
       
         setFormValues({
             ...formValues,
-            articulos: articulos.filter( (articulo)=> articulo != art )
+            articulos: articulos.filter( (articulo)=> articulo != art ),
+            total: total - art.subtotalArt
         });
+        
+      
     }
 
 
 
     const closeModal = () => {
+        console.log("entro!");
         dispatch( uiCloseModal() );
         dispatch( ventaClearActiveVenta() );
-        setFormValues( initVenta );
+        setFormValues( initVenta, {articulos: articulos.length = 0} );
         setFormValuesArt( initArticulo );
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-
-        console.log(formValues);
 
        if ( activeVenta ) {
             dispatch( ventaStartUpdate( formValues ) );
