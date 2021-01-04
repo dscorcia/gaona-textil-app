@@ -19,6 +19,8 @@ import { PrivateRoute } from './PrivateRoute';
 import { Remitos } from '../components/modulos/Remitos';
 import { Facturas } from '../components/modulos/Facturas';
 import { DetalleVenta } from '../components/modulos/ventas/DetalleVenta';
+import { RemitoHilanderia } from '../components/modulos/remitos/RemitoHilanderia';
+import { RemitoTintoreria } from '../components/modulos/remitos/RemitoTintoreria';
 
 
 export const AppRouter = () => {
@@ -85,15 +87,15 @@ export const AppRouter = () => {
 
                     <PrivateRoute 
                         exact 
-                        path="/remitos" 
-                        component={ Remitos }
+                        path="/hilanderia" 
+                        component={ RemitoHilanderia }
                         isAuthenticated={ !!uid } 
                     />
 
                     <PrivateRoute 
                         exact 
-                        path="/facturas" 
-                        component={ Facturas }
+                        path="/tintoreria" 
+                        component={ RemitoTintoreria }
                         isAuthenticated={ !!uid } 
                     />
 

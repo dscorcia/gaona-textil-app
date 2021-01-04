@@ -126,7 +126,6 @@ export const VentasModal = () => {
 
 
     const closeModal = () => {
-        console.log("entro!");
         dispatch( uiCloseModal() );
         dispatch( ventaClearActiveVenta() );
         setFormValues( initVenta, {articulos: articulos.length = 0} );

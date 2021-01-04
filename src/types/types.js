@@ -37,6 +37,14 @@ export const types = {
     ventaLoaded: '[venta] Venta loaded',
     ventaLoadedOne: '[venta] Venta loaded one',
 
+    remitoHSetActive: '[remitoh] Set Active',
+    remitoHAddNew: '[remitoh] Add new',
+    remitoHClearActiveRemito: '[remitoh] Clear active remito',
+    remitoHUpdated: '[remitoh] Remito updated',
+    remitoHDeleted: '[remitoh] Remito deleted',
+    remitoHLoaded: '[remitoh] Remito loaded',
+    remitoHLoadedOne: '[remitoh] Remito loaded one',
+
 
 
 }
