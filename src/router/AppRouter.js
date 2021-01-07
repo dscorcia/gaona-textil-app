@@ -21,6 +21,7 @@ import { Facturas } from '../components/modulos/Facturas';
 import { DetalleVenta } from '../components/modulos/ventas/DetalleVenta';
 import { RemitoHilanderia } from '../components/modulos/remitos/RemitoHilanderia';
 import { RemitoTintoreria } from '../components/modulos/remitos/RemitoTintoreria';
+import { DetalleRemitoH } from '../components/modulos/remitos/DetalleRemitoH';
 
 
 export const AppRouter = () => {
@@ -90,6 +91,13 @@ export const AppRouter = () => {
                         path="/hilanderia" 
                         component={ RemitoHilanderia }
                         isAuthenticated={ !!uid } 
+                    />
+
+                    <PrivateRoute 
+                        exact 
+                        path="/hilanderia/detalle/:remitoHilanderia" 
+                        component={ DetalleRemitoH } 
+                        isAuthenticated={ !!uid }
                     />
 
                     <PrivateRoute 

@@ -3,10 +3,8 @@ import moment from 'moment';
 import Modal from 'react-modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiCloseModal } from '../../../actions/ui';
-import { ventaClearActiveVenta, ventaStartUpdate, ventaStartAddNew } from '../../../actions/ventas';
+import { remitoHClearActiveRemito, remitoHStartUpdate, remitoHStartAddNew } from '../../../actions/remitos';
 import DateTimePicker from 'react-datetime-picker';
-
-
 
 const customStyles = {
     content : {
@@ -22,50 +20,40 @@ const customStyles = {
   };
   Modal.setAppElement('#root');
 
-  //const now = moment().minutes(0).seconds(0).add(1,'hours');
-
-  const initVenta = {
-    remitoVenta: '',
-    //fecha: now.toDate(),
+  const initRemito = {
+    remitoHilanderia: '',
     fecha: new Date(),
-    cliente: '',
+    nroFactura: '',
     articulos: [],
-    total: 0
 }
 
 const initArticulo = {
     idArticulo: '',
     descripcion: '',
     color: '',
-    cantidad: 0,
-    precioKg: 0,
-    subtotalArt: 0,
+    cantidadKgs: 0,
+    cantidadPiezas: 0
 }
 
-export const VentasModal = () => {
+export const RemitosHModal = () => {
 
     const { modalOpen } = useSelector( state => state.ui );
-    const { activeVenta } = useSelector( state => state.ventas );
+    const { activeRemito } = useSelector( state => state.remitosH );
     const dispatch = useDispatch();
 
-    const [ dateStart, setDateStart ] = useState( initVenta.fecha );
-
-    const [formValues, setFormValues] = useState( initVenta );
-    const { remitoVenta, fecha, articulos, cliente, total } = formValues;
-
+    const [ dateStart, setDateStart ] = useState( initRemito.fecha );
+    const [formValues, setFormValues] = useState( initRemito );
+    const { remitoHilanderia, fecha, nroFactura, articulos } = formValues;
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
-    const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt} = formValuesArt;
-
-
-    useEffect(() => {
-        if ( activeVenta ) {
-            setFormValues( activeVenta );
-        } else {
-            setFormValues( initVenta );
-        }
-    }, [activeVenta, setFormValues])
+    const { idArticulo, descripcion, color, cantidadKgs, cantidadPiezas } = formValuesArt;
     
-
+    useEffect(() => {
+        if ( activeRemito ) {
+            setFormValues( activeRemito );
+        } else {
+            setFormValues( initRemito );
+        }
+    }, [activeRemito, setFormValues])
 
     const handleInputChange = ({ target }) => {
         setFormValues({
@@ -96,9 +84,8 @@ export const VentasModal = () => {
         idArticulo,
         descripcion,
         color,
-        cantidad,
-        precioKg,
-        subtotalArt : cantidad * precioKg,
+        cantidadKgs,
+        cantidadPiezas
         }
 
         setFormValues({
@@ -107,8 +94,9 @@ export const VentasModal = () => {
         });
 
         setFormValuesArt(initArticulo);
-        setFormValues({ ...formValues, total: total + item.subtotalArt });
-        
+        setFormValues({ ...formValues });
+
+        console.log(articulos);
     }
 
     const onDeleteArticulo = (e,art) => {
@@ -116,32 +104,28 @@ export const VentasModal = () => {
       
         setFormValues({
             ...formValues,
-            articulos: articulos.filter( (articulo)=> articulo != art ),
-            total: total - art.subtotalArt
+            articulos: articulos.filter( (articulo)=> articulo !== art ),
         });
     }
 
-
-
     const closeModal = () => {
         dispatch( uiCloseModal() );
-        dispatch( ventaClearActiveVenta() );
-        setFormValues( initVenta, {articulos: articulos.length = 0} );
+        dispatch( remitoHClearActiveRemito() );
+        setFormValues( initRemito, {articulos: articulos.length = 0} );
         setFormValuesArt( initArticulo );
     }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
-       if ( activeVenta ) {
-            dispatch( ventaStartUpdate( formValues ) );
+       if ( activeRemito ) {
+            dispatch( remitoHStartUpdate( formValues ) );
         } 
         else {
-            dispatch( ventaStartAddNew(formValues) );
+            dispatch( remitoHStartAddNew(formValues) );
         }
         closeModal();
     }
-
 
     return (
         <div>
@@ -153,20 +137,20 @@ export const VentasModal = () => {
         className="modal"
         overlayClassName="modal-fondo"
         >
-          <h5> { (activeVenta)? 'Editar venta': 'Nueva venta' } </h5>
+          <h5> { (activeRemito)? 'Editar remito': 'Nuevo remito' } </h5>
             <hr />
             <form className="container" 
                 onSubmit={ handleSubmitForm }>
                
 
                <div className="form-group">
-                    <label>Remito Venta</label>
+                    <label>Remito Hilanderia</label>
                     <input 
                         className="form-control"
                         placeholder="Remito"
-                        name="remitoVenta"
+                        name="remitoHilanderia"
                         autoComplete="off"
-                        value={ remitoVenta || ""}
+                        value={ remitoHilanderia || ""}
                         onChange={ handleInputChange }
                     />
                 </div>
@@ -182,13 +166,13 @@ export const VentasModal = () => {
                 </div>
 
                 <div className="form-group">
-                    <label>Cliente</label>
+                    <label>Factura</label>
                     <input 
                         className="form-control" 
-                        placeholder="Cliente"
+                        placeholder="Factura"
                         autoComplete="off"
-                        name="cliente"
-                        value={ cliente || ""}
+                        name="nroFactura"
+                        value={ nroFactura || ""}
                         onChange={ handleInputChange } />
                 </div>
                 <div className="form-group">
@@ -202,9 +186,8 @@ export const VentasModal = () => {
                                         ID Articulo: { art.idArticulo } - 
                                         Descripcion: { art.descripcion } - 
                                         Color: { art.color } -
-                                        Cantidad: { art.cantidad } -
-                                        Precio KG: { art.precioKg } - 
-                                        Subtotal: { art.subtotalArt }
+                                        CantidadKgs: { art.cantidadKgs } -
+                                        CantidadPiezas: { art.cantidadPiezas } - 
                                         <button className="btn btn-danger bot-trash-modal mr-2 ml-2" onClick={ (e)=> onDeleteArticulo(e,art)}>
                                             <i className="fas fa-trash-alt"></i>
                                         </button>
@@ -252,19 +235,19 @@ export const VentasModal = () => {
                         <div className="col">
                             <input
                                 className="form-control" 
-                                placeholder="Cantidad"
+                                placeholder="Cantidad KG"
                                 autoComplete="off"
-                                name="cantidad"
-                                value={ cantidad || ""}
+                                name="cantidadKgs"
+                                value={ cantidadKgs || ""}
                                 onChange={ handleInputChangeArt }/>
                         </div>
                         <div className="col">
                             <input
                                 className="form-control" 
-                                placeholder="Precio KG"
+                                placeholder="Cantidad Piezas"
                                 autoComplete="off"
-                                name="precioKg"
-                                value={ precioKg || ""}
+                                name="cantidadPiezas"
+                                value={ cantidadPiezas || ""}
                                 onChange={ handleInputChangeArt }/>
                         </div>
                         
@@ -274,18 +257,6 @@ export const VentasModal = () => {
                             </button>
                         </div>
                     </div>
-                </div>
-                
-
-                <div className="form-group">
-                    <label>Total</label>
-                    <input 
-                        className="form-control" 
-                        placeholder="Total"
-                        autoComplete="off"
-                        name="total"
-                        value={ total || ""}
-                        onChange={ handleInputChange } />
                 </div>
             
             <button
@@ -307,5 +278,6 @@ export const VentasModal = () => {
     )
 
 
-}
 
+
+}
