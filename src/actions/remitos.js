@@ -136,3 +136,138 @@ export const remitoHGetOne = ( id ) => {
         }
     }
 }
+
+/** REMITOS TINTORERIA */
+
+export const remitoTAddNew = (remito) => ({
+    type: types.remitoTAddNew,
+    payload: remito
+});
+
+export const remitoTSetActive = (remito) => ({
+    type: types.remitoTSetActive,
+    payload: remito
+});
+
+export const remitoTClearActiveRemito = () => ({ type: types.remitoTClearActiveRemito });
+
+export const remitoTUpdated = ( remito ) => ({
+    type: types.remitoTUpdated,
+    payload: remito
+});
+
+export const remitoTDeleted = () => ({ 
+    type: types.remitoTDeleted
+ });
+
+ const remitoTLoaded = (remito) => ({
+    type: types.remitoTLoaded,
+    payload: remito
+});
+
+const remitoTLoadedOne = (remito) => ({
+    type: types.remitoTLoadedOne,
+    payload: remito
+});
+
+
+export const remitoTStartLoading = () => {
+    return async (dispatch) =>{
+        try {
+            const resp = await fetchConToken( 'remitoTintoreria/remitos' );
+            const body = await resp.json();
+            console.log(body);
+
+            const remitos = body.nroRemitoTintoreria;
+            console.log(remitos);
+            dispatch (remitoTLoaded(remitos))
+
+        }catch (error){
+            console.log(error)
+        }
+    }
+}
+
+export const remitoTStartDelete = () => {
+    return async ( dispatch, getState ) => {
+
+        const { nroRemitoTintoreria} = getState().remitosT.activeRemito;
+        try {
+            const resp = await fetchConToken(`remitoTintoreria/delete/${ nroRemitoTintoreria }`, {}, 'DELETE' );
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( remitoHDeleted() );
+                Swal.fire(`Remito ${nroRemitoTintoreria} Eliminado`, body.msg, 'success');
+                setInterval(function(){ window.location.reload(); }, 2000);
+                
+            } else {
+                Swal.fire('Error', body.msg, 'error');
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+}
+
+export const remitoTStartAddNew = ( remito ) => {
+    return async( dispatch, getState ) => {
+
+        try {
+            const resp = await fetchConToken('remitoTintoreria/new', remito, 'POST');
+            const body = await resp.json();
+            
+            if ( body.ok ) {
+                dispatch( remitoTAddNew( remito) );
+                Swal.fire(`Remito creado con exito!`, '', 'success');
+                //setInterval(function(){ window.location.reload(); }, 1000);
+                dispatch( remitoTStartLoading());
+            }
+            else {
+            Swal.fire('Error', body.msg, 'error');
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+}
+
+export const remitoTStartUpdate = ( remito ) => {
+
+    return async(dispatch) => {
+
+        try {
+            const resp = await fetchConToken(`remitoTintoreria/modify/${ remito.nroRemitoTintoreria }`, remito, 'PUT' );
+            const body = await resp.json();
+
+            if ( body.ok ) {
+                dispatch( remitoTUpdated( remito ) );
+                Swal.fire(`Remito modificado con exito!`, '', 'success');
+            } else {
+                Swal.fire('Error', body.msg, 'error');
+            }
+
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const remitoTGetOne = ( id ) => {
+
+    return async (dispatch) =>{
+        try {
+            const resp = await fetchConToken( `remitoTintoreria/remitoUnico/${ id }`);
+            const body = await resp.json();
+            const remito = body.remitosTintoreria;
+            console.log(remito);
+            dispatch (remitoTLoadedOne(remito));
+
+        }catch (error){
+            console.log(error)
+        }
+    }
+}

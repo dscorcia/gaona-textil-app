@@ -45,6 +45,14 @@ export const types = {
     remitoHLoaded: '[remitoh] Remito loaded',
     remitoHLoadedOne: '[remitoh] Remito loaded one',
 
+    remitoTSetActive: '[remitot] Set Active',
+    remitoTAddNew: '[remitot] Add new',
+    remitoTClearActiveRemito: '[remitot] Clear active remito',
+    remitoTUpdated: '[remitot] Remito updated',
+    remitoTDeleted: '[remitot] Remito deleted',
+    remitoTLoaded: '[remitot] Remito loaded',
+    remitoTLoadedOne: '[remitot] Remito loaded one',
+
 
 
 }

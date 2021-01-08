@@ -6,6 +6,7 @@ import { usuariosReducer } from './usuariosReducer';
 import { clientesReducer } from './clientesReducer';
 import { ventasReducer } from './ventasReducer';
 import { remitosHReducer } from './remitosHReducer';
+import { remitosTReducer } from './remitosTReducer';
 
 
 export const rootReducer = combineReducers({
@@ -16,5 +17,6 @@ export const rootReducer = combineReducers({
     clientes: clientesReducer,
     ventas: ventasReducer,
     remitosH : remitosHReducer,
+    remitosT: remitosTReducer
 })
 
