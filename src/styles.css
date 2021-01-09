@@ -56,6 +56,11 @@ li{
     font-size: 12px;
     }
 
+.li-inline {
+    font-size: 12px;
+    float: left;
+}
+
 
 
 /* Datepicker */
