@@ -53,6 +53,12 @@ export const types = {
     remitoTLoaded: '[remitot] Remito loaded',
     remitoTLoadedOne: '[remitot] Remito loaded one',
 
-
+    stockSetActive: '[stock] Set Active',
+    stockAddNew: '[stock] Add new',
+    stockClearActiveStock: '[stock] Clear active stock',
+    stockUpdated: '[stock] Stock updated',
+    stockDeleted: '[stock] Stock deleted',
+    stockLoaded: '[stock] Stock loaded',
+    stockLoadedOne: '[stock] Stock loaded one',
 
 }
