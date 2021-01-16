@@ -63,7 +63,7 @@ export const remitosTReducer = ( state = initialState, action ) => {
                 )
             }
         
-        case types.remitoHDeleted:
+        case types.remitoTDeleted:
             return {
                 ...state,
                 remito: state.remitos.filter(

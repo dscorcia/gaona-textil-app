@@ -53,6 +53,7 @@ export const Navbar = () => {
                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li><a className="dropdown-item" href="/hilanderia">Hilandería</a></li>
                             <li><a className="dropdown-item" href="/tintoreria">Tintorería</a></li>
+                            <li><a className="dropdown-item" href="/tintoreria">Solicitud Tintorería</a></li>
                         </ul>
                     </li>
                 </ul>

@@ -23,6 +23,7 @@ import { RemitoHilanderia } from '../components/modulos/remitos/RemitoHilanderia
 import { RemitoTintoreria } from '../components/modulos/remitos/RemitoTintoreria';
 import { DetalleRemitoH } from '../components/modulos/remitos/DetalleRemitoH';
 import { DetalleRemitoT } from '../components/modulos/remitos/DetalleRemitoT';
+import { DetalleStock } from '../components/modulos/stock/DetalleStock';
 
 
 export const AppRouter = () => {
@@ -79,6 +80,12 @@ export const AppRouter = () => {
                         path="/stock" 
                         component={ Stock }
                         isAuthenticated={ !!uid } 
+                    />
+                    <PrivateRoute 
+                        exact 
+                        path="/stock/detalle/:idArticulo/:color" 
+                        component={ DetalleStock } 
+                        isAuthenticated={ !!uid }
                     />
                     <PrivateRoute 
                         exact 

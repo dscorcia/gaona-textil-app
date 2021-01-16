@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navbar } from '../../Navbar';
 import { uiOpenModal } from '../../../actions/ui';
-import { stockStartLoading, stockSetActive, stockStartDelete } from '../../../actions/stock';
+import { stockStartLoading, stockSetActive, stockStartDelete, stockGetOne } from '../../../actions/stock';
 import { StockModal } from '../stock/StockModal';
 
 
@@ -19,12 +19,11 @@ export const Stock = ( {history} ) => {
     const onOpenModal = (e) => {
         dispatch( uiOpenModal() );
     }
-/*
+
     function onDetailStock(stock) {
-        //dispatch( ventaSetActive(venta ) );
         dispatch(stockGetOne(stock.idArticulo, stock.color));
-        history.push(`/ventas/detalle/${stock.idArticulo}/${stock.color}`);
-    }*/
+        history.push(`/stock/detalle/${stock.idArticulo}/${stock.color}`);
+    }
 
     function onModifyStock(stock){
 
@@ -88,7 +87,7 @@ export const Stock = ( {history} ) => {
                                         <i className="fas fa-trash-alt"></i>
                                     </button>
 
-                                    <button className="btn btn-primary mr-2" >
+                                    <button className="btn btn-primary mr-2" onClick={ ()=> onDetailStock(stock)}>
                                         <i className="fas fa-file-alt mr-2"></i>
                                         Ver detalle
                                     </button>

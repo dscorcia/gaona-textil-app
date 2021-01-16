@@ -61,4 +61,12 @@ export const types = {
     stockLoaded: '[stock] Stock loaded',
     stockLoadedOne: '[stock] Stock loaded one',
 
+    solTSetActive: '[solt] Set Active',
+    solTAddNew: '[solt] Add new',
+    solTClearActiveSol: '[solt] Clear active solicitud',
+    solTUpdated: '[solt] Solt updated',
+    solTDeleted: '[solt] Solt deleted',
+    solTLoaded: '[solt] Solt loaded',
+    solTLoadedOne: '[solt] Solt loaded one',
+
 }

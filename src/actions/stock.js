@@ -119,18 +119,18 @@ export const stockStartUpdate = ( stock ) => {
     }
 }
 
-/*
-export const stockGetOne = ( id ) => {
+
+export const stockGetOne = ( id, color ) => {
     return async (dispatch) =>{
         try {
-            const resp = await fetchConToken( `venta/ventaUnica/${ id }`);
+            const resp = await fetchConToken( `stock/stock/${ id }/${color}`);
             const body = await resp.json();
-            const venta = body.ventas;
-            dispatch (ventaLoadedOne(venta));
+            const stock = body.stockUnico;
+            dispatch (stockLoadedOne(stock));
 
         }catch (error){
             console.log(error)
         }
     }
-}*/
+}
 
