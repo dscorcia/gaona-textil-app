@@ -197,7 +197,7 @@ export const remitoTStartDelete = () => {
             const body = await resp.json();
 
             if ( body.ok ) {
-                dispatch( remitoHDeleted() );
+                dispatch( remitoTDeleted() );
                 Swal.fire(`Remito ${nroRemitoTintoreria} Eliminado`, body.msg, 'success');
                 setInterval(function(){ window.location.reload(); }, 2000);
                 

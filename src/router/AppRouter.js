@@ -24,6 +24,8 @@ import { RemitoTintoreria } from '../components/modulos/remitos/RemitoTintoreria
 import { DetalleRemitoH } from '../components/modulos/remitos/DetalleRemitoH';
 import { DetalleRemitoT } from '../components/modulos/remitos/DetalleRemitoT';
 import { DetalleStock } from '../components/modulos/stock/DetalleStock';
+import { SolicitudTintoreria } from '../components/modulos/remitos/SolicitudTintoreria';
+import { DetalleSolicitudTintoreria } from '../components/modulos/remitos/DetalleSolicitudTintoreria';
 
 
 export const AppRouter = () => {
@@ -121,6 +123,21 @@ export const AppRouter = () => {
                         component={ DetalleRemitoT } 
                         isAuthenticated={ !!uid }
                     />
+
+                    <PrivateRoute 
+                        exact 
+                        path="/solictintoreria" 
+                        component={ SolicitudTintoreria }
+                        isAuthenticated={ !!uid } 
+                    />
+
+                    <PrivateRoute 
+                        exact 
+                        path="/solictintoreria/detalle/:solicitudTintoreria" 
+                        component={ DetalleSolicitudTintoreria } 
+                        isAuthenticated={ !!uid }
+                    />
+
 
                     <Redirect to="/home" />   
                 </Switch>
