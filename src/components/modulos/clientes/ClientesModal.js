@@ -20,10 +20,10 @@ const customStyles = {
 
 const initCliente = {
     //idRegistro: "",
-    cuit: 22123456788,
+    cuit: "",
     razonSocial: "",
     nombre: "",
-    telefono: 12345678
+    telefono: ""
 
 }
 

@@ -3,11 +3,11 @@ import { types } from '../types/types';
 const initialState = {
     clientes: [{
         _id: "",
-        idRegistro: 1,
-        cuit: 22123456788,
+        idRegistro: "",
+        cuit: "",
         razonSocial: "",
         nombre: "",
-        telefono: 12345678
+        telefono: ""
     }],
     activeCliente: null
     

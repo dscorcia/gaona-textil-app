@@ -79,6 +79,8 @@ export const clienteStartAddNew = ( cliente ) => {
         try {
             const resp = await fetchConToken('cliente/new', cliente, 'POST');
             const body = await resp.json();
+            console.log(cliente);
+            console.log(body);
 
             if ( body.ok ) {
                 dispatch( clienteAddNew( cliente ) );
