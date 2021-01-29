@@ -68,7 +68,7 @@ export const RemitoHilanderia = ( {history} ) => {
                             <tr key= {remito.remitoHilanderia}>
                                 
                                 <td>{ remito.remitoHilanderia }</td>
-                                <td>{ remito.fecha.toString() }</td>
+                                <td>{ new Date(remito.fecha).toLocaleDateString() }</td>
                                 <td>{ remito.nroFactura }</td>
                                
                                 <td>

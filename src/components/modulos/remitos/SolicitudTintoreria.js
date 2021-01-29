@@ -70,7 +70,7 @@ export const SolicitudTintoreria = ( {history} ) => {
                                 
                                 <td>{ solicitud.nroSolicitudTintoreria }</td>
                                 <td>{ solicitud.remitoHilanderia }</td>
-                                <td>{ solicitud.fecha.toString() }</td>
+                                <td>{ new Date(solicitud.fecha).toLocaleDateString() }</td>
                                 <td>{ solicitud.nroPartida }</td>
                                
                                 <td>

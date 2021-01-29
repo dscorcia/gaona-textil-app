@@ -74,7 +74,7 @@ export const Ventas = ( {history} ) => {
                             <tr key= {venta.remitoVenta}>
                                 
                                 <td>{ venta.remitoVenta }</td>
-                                <td>{ venta.fecha.toString() }</td>
+                                <td>{ new Date(venta.fecha).toLocaleDateString() }</td>
                                 <td>{ venta.cliente }</td>
                                
                                 <td>

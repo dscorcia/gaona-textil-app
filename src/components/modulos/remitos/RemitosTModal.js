@@ -172,8 +172,11 @@ export const RemitosTModal = () => {
             <form className="container" 
                 onSubmit={ handleSubmitForm }>
                
+               <div>
+                    <div className="form-row mb-2">
+                        <div className="col">
 
-               <div className="form-group">
+               
                     <label>Remito Tintoreria</label>
                     <input 
                         className="form-control"
@@ -185,17 +188,7 @@ export const RemitosTModal = () => {
                     />
                 </div>
 
-                <div className="form-group">
-                    <label>Fecha</label>
-                    <DateTimePicker
-                        onChange={ handleStartDateChange }
-                        value={ fecha }
-                        className="form-control"
-                        dateFormat="MMMM d, yyyy h:mm aa"
-                    />
-                </div>
-
-                <div className="form-group">
+                <div className="col">
                     <label>Partida</label>
                     <input 
                         className="form-control" 
@@ -204,6 +197,18 @@ export const RemitosTModal = () => {
                         name="nroPartida"
                         value={ nroPartida || ""}
                         onChange={ handleInputChange } />
+                </div>
+                </div>
+                </div>
+
+                <div className="form-group">
+                    <label>Fecha</label>
+                    <DateTimePicker
+                        onChange={ handleStartDateChange }
+                        value={ fecha }
+                        className="form-control"
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                    />
                 </div>
 
 
