@@ -33,7 +33,8 @@ export const DetalleStock = () => {
                                     <th scope="col">Kg Tintorería</th>
                                     <th scope="col">Piezas Tintorería</th>
                                     <th scope="col">Costo</th>
-                                    <th scope="col">Subtotal Costo</th>
+                                    <th scope="col">Subtotal Negocio</th>
+                                    <th scope="col">Subtotal Tintoreria</th>
                                     <th scope="col">Fabrica Tintorería</th>
                                     <th scope="col">Empresa</th>
                                 </tr>
@@ -49,7 +50,8 @@ export const DetalleStock = () => {
                                     <td> { articulo.cantidadKgsTintoreria } </td>
                                     <td> { articulo.cantidadPiezasTintoreria } </td>
                                     <td> { articulo.costo } </td>
-                                    <td> { articulo.subtotalcosto } </td>
+                                    <td> { articulo.subtotalCosto } </td>
+                                    <td> { articulo.subtotalCostoTintoreria } </td>
                                     <td> { articulo.fabrica_tintoreria } </td>
                                     <td> { articulo.empresa } </td>
                                 </tr>

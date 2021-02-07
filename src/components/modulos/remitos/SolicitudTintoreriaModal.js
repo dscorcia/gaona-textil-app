@@ -23,7 +23,6 @@ const customStyles = {
     nroSolicitudTintoreria: '',
     remitoHilanderia: [],
     fecha: new Date(),
-    nroPartida: '',
     articulos: [],
     remitoNuevo: ''
 }
@@ -45,7 +44,7 @@ export const SolicitudTintoreriaModal = () => {
 
     const [ dateStart, setDateStart ] = useState( initSol.fecha );
     const [formValues, setFormValues] = useState( initSol );
-    const { nroSolicitudTintoreria, remitoHilanderia, fecha, nroPartida, articulos, remitoNuevo } = formValues;
+    const { nroSolicitudTintoreria, remitoHilanderia, fecha, articulos, remitoNuevo } = formValues;
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
     const { idArticulo, descripcion, color, cantidadKgs, cantidadKgsRib, cantidadPiezas, cantidadPiezasRib } = formValuesArt;
 
@@ -87,7 +86,10 @@ export const SolicitudTintoreriaModal = () => {
         descripcion,
         color,
         cantidadKgs,
-        cantidadPiezas
+        cantidadPiezas,
+        cantidadKgsRib,
+        cantidadPiezasRib
+
         }
 
         setFormValues({
@@ -190,17 +192,6 @@ export const SolicitudTintoreriaModal = () => {
                         className="form-control"
                         dateFormat="MMMM d, yyyy h:mm aa"
                     />
-                </div>
-
-                <div className="form-group">
-                    <label>Partida</label>
-                    <input 
-                        className="form-control" 
-                        placeholder="Partida"
-                        autoComplete="off"
-                        name="nroPartida"
-                        value={ nroPartida || ""}
-                        onChange={ handleInputChange } />
                 </div>
 
 

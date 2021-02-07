@@ -55,6 +55,7 @@ export const RemitoHilanderia = ( {history} ) => {
                             <th scope="col">Remito Hilanderia</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Factura</th>
+                            <th scope="col">Ubicación</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -70,6 +71,7 @@ export const RemitoHilanderia = ( {history} ) => {
                                 <td>{ remito.remitoHilanderia }</td>
                                 <td>{ new Date(remito.fecha).toLocaleDateString() }</td>
                                 <td>{ remito.nroFactura }</td>
+                                <td>{ remito.ubicacion }</td>
                                
                                 <td>
                                     <button className="btn btn-info mr-2" onClick={ ()=> onModifyRemito(remito)}>

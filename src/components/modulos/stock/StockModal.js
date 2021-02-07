@@ -28,6 +28,7 @@ const customStyles = {
     cantidadPiezasTintoreria: '',
     costo: '',
     subtotalCosto: '',
+    subtotalCostoTintoreria: '',
     fabrica_tintoreria: '',
     empresa: ''
 }
@@ -48,6 +49,7 @@ export const StockModal = () => {
             cantidadPiezasTintoreria,
             costo,
             subtotalCosto,
+            subtotalCostoTintoreria,
             fabrica_tintoreria,
             empresa 
     } = formValues;
@@ -221,13 +223,26 @@ export const StockModal = () => {
 
                         <div className="col">
                             <div className="form-group">
-                            <label>Subtotal Costo</label>
+                            <label>Subtotal Negocio</label>
                             <input 
                                 className="form-control" 
                                 placeholder="Subtotal Costo"
                                 autoComplete="off"
                                 name="subtotalCosto"
                                 value={ subtotalCosto || ""}
+                                onChange={ handleInputChange } />
+                            </div>
+                        </div>
+
+                        <div className="col">
+                            <div className="form-group">
+                            <label>Subtotal Tintoreria</label>
+                            <input 
+                                className="form-control" 
+                                placeholder="Subtotal Tintoreria"
+                                autoComplete="off"
+                                name="subtotalCostoTintoreria"
+                                value={ subtotalCostoTintoreria || ""}
                                 onChange={ handleInputChange } />
                             </div>
                         </div>

@@ -55,7 +55,6 @@ export const SolicitudTintoreria = ( {history} ) => {
                             <th scope="col">Solicitud Tintoreria</th>
                             <th scope="col">Remito Hilanderia</th>
                             <th scope="col">Fecha</th>
-                            <th scope="col">Partida</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -71,7 +70,6 @@ export const SolicitudTintoreria = ( {history} ) => {
                                 <td>{ solicitud.nroSolicitudTintoreria }</td>
                                 <td>{ solicitud.remitoHilanderia }</td>
                                 <td>{ new Date(solicitud.fecha).toLocaleDateString() }</td>
-                                <td>{ solicitud.nroPartida }</td>
                                
                                 <td>
                                     <button className="btn btn-info mr-2" onClick={ ()=> onModifySol(solicitud)}>

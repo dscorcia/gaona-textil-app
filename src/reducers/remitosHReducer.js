@@ -5,12 +5,14 @@ const initialState = {
         remitoHilanderia: "",
         fecha: new Date().getTime(),
         nroFactura: "",
+        ubicacion: "",
         articulos: [{}],
     }],
     activeRemito: null,
     remito: {
         remitoHilanderia: "",
         nroFactura: "",
+        ubicacion: "",
         articulos: [{}],
     }
     

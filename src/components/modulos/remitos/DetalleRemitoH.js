@@ -30,6 +30,7 @@ export const DetalleRemitoH = () => {
                                 <th scope="col">Remito Hilanderia</th>
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Factura</th>
+                                <th scope="col">Ubicación</th>
                                 <th scope="col">Articulos</th>
                     
                             </tr>
@@ -40,6 +41,7 @@ export const DetalleRemitoH = () => {
                                 <td> { remitoHilanderia} </td>
                                 <td> { remito.fecha } </td>
                                 <td> { remito.nroFactura } </td>
+                                <td> { remito.ubicacion } </td>
                                 <td> {
                                     articulos.map( (art, i) =>{
                                         return(

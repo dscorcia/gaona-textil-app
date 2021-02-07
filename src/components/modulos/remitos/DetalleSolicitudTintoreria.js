@@ -29,7 +29,6 @@ export const DetalleSolicitudTintoreria = () => {
                             <tr>
                                 <th scope="col">Solicitud Tintoreria</th>
                                 <th scope="col">Fecha</th>
-                                <th scope="col">Partida</th>
                                 <th scope="col">Remito Hilanderia</th>
                                 <th scope="col">Articulos</th>
                     
@@ -40,7 +39,6 @@ export const DetalleSolicitudTintoreria = () => {
                             <tr>
                                 <td> { solicitudTintoreria } </td>
                                 <td> { solicitud.fecha } </td>
-                                <td> { solicitud.nroPartida } </td>
                                 <td> {
                                     remitoHilanderia.map( (remito, i) =>{
                                         return(

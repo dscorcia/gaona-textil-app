@@ -24,6 +24,7 @@ const customStyles = {
     remitoHilanderia: '',
     fecha: new Date(),
     nroFactura: '',
+    ubicacion: '',
     articulos: [],
 }
 
@@ -43,7 +44,7 @@ export const RemitosHModal = () => {
 
     const [ dateStart, setDateStart ] = useState( initRemito.fecha );
     const [formValues, setFormValues] = useState( initRemito );
-    const { remitoHilanderia, fecha, nroFactura, articulos } = formValues;
+    const { remitoHilanderia, fecha, nroFactura, articulos, ubicacion } = formValues;
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
     const { idArticulo, descripcion, color, cantidadKgs, cantidadPiezas } = formValuesArt;
     
@@ -175,6 +176,18 @@ export const RemitosHModal = () => {
                         value={ nroFactura || ""}
                         onChange={ handleInputChange } />
                 </div>
+
+                <div className="form-group">
+                    <label>Ubicación</label>
+                    <input 
+                        className="form-control" 
+                        placeholder="Ubicación"
+                        autoComplete="off"
+                        name="ubicacion"
+                        value={ ubicacion || ""}
+                        onChange={ handleInputChange } />
+                </div>
+
                 <div className="form-group">
                     <label>Articulos</label>
                     <br></br>

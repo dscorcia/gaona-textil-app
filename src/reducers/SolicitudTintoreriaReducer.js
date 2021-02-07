@@ -3,7 +3,6 @@ import { types } from '../types/types';
 const initialState = {
     solicitudes: [{
         nroSolicitudTintoreria: "",
-        nroPartida: "",
         remitoHilanderia: [],
         fecha: new Date().getTime(),
         articulos: [{}],
@@ -11,7 +10,6 @@ const initialState = {
     activeSol: null,
     solicitud: {
         nroSolicitudTintoreria: "",
-        nroPartida: "",
         remitoHilanderia: [],
         articulos: [{}],
     }
