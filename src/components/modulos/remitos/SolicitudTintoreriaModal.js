@@ -314,7 +314,7 @@ export const SolicitudTintoreriaModal = () => {
                         <div className="col">
                             <input
                                 className="form-control" 
-                                placeholder="Cantidad KG Rib"
+                                placeholder="KG Rib"
                                 autoComplete="off"
                                 name="cantidadKgsRib"
                                 value={ cantidadKgsRib || ""}
@@ -332,7 +332,7 @@ export const SolicitudTintoreriaModal = () => {
                         <div className="col">
                             <input
                                 className="form-control" 
-                                placeholder="Cantidad Piezas Rib"
+                                placeholder="Piezas Rib"
                                 autoComplete="off"
                                 name="cantidadPiezasRib"
                                 value={ cantidadPiezasRib || ""}
