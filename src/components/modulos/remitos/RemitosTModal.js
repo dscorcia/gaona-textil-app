@@ -90,7 +90,9 @@ export const RemitosTModal = () => {
         descripcion,
         color,
         cantidadKgs,
-        cantidadPiezas
+        cantidadPiezas,
+        cantidadKgsRib,
+        cantidadPiezasRib
         }
 
         setFormValues({

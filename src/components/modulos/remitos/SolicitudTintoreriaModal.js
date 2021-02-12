@@ -12,11 +12,27 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      height                : 'auto',
-      maxWidth             : '760px',                
-      transform             : 'translate(-50%, -50%)'
+      height                : '82%',
+      maxWidth             : '850px',                
+      transform             : 'translate(-50%, -50%)',
+      overflow: 'scroll'
     }
   };
+
+  /**
+   *  var customStyles = {
+      content : {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        height: '500px', // <-- This sets the height
+        overlfow: 'scroll' // <-- This tells the modal to scrol
+      }
+    };
+   */
   Modal.setAppElement('#root');
 
   const initSol = {
