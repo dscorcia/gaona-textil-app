@@ -15,9 +15,10 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      height                : 'auto',
-      maxWidth             : '760px',                
-      transform             : 'translate(-50%, -50%)'
+      height                : '82%',
+      maxWidth             : '850px',                
+      transform             : 'translate(-50%, -50%)',  
+      overflow: 'scroll'
     }
   };
   Modal.setAppElement('#root');
@@ -40,6 +41,7 @@ const initArticulo = {
     cantidad: 0,
     precioKg: 0,
     subtotalArt: 0,
+    cantidadPiezas: 0,
 }
 
 export const VentasModal = () => {
@@ -54,7 +56,7 @@ export const VentasModal = () => {
     const { remitoVenta, fecha, articulos, cliente, total } = formValues;
 
     const [formValuesArt, setFormValuesArt] = useState( initArticulo );
-    const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt} = formValuesArt;
+    const { idArticulo, descripcion, color, cantidad, precioKg, subtotalArt, cantidadPiezas} = formValuesArt;
 
 
     useEffect(() => {
@@ -99,6 +101,7 @@ export const VentasModal = () => {
         cantidad,
         precioKg,
         subtotalArt : cantidad * precioKg,
+        cantidadPiezas,
         }
 
         setFormValues({
@@ -203,7 +206,8 @@ export const VentasModal = () => {
                                         Descripcion: { art.descripcion } - 
                                         Color: { art.color } -
                                         Cantidad: { art.cantidad } -
-                                        Precio KG: { art.precioKg } - 
+                                        Precio KG: { art.precioKg } -
+                                        Cantidad Piezas: { art.cantidadPiezas} -  
                                         Subtotal: { art.subtotalArt }
                                         <button className="btn btn-danger bot-trash-modal mr-2 ml-2" onClick={ (e)=> onDeleteArticulo(e,art)}>
                                             <i className="fas fa-trash-alt"></i>
@@ -258,6 +262,17 @@ export const VentasModal = () => {
                                 value={ cantidad || ""}
                                 onChange={ handleInputChangeArt }/>
                         </div>
+
+                        <div className="col">
+                            <input
+                                className="form-control" 
+                                placeholder="Cantidad Piezas"
+                                autoComplete="off"
+                                name="cantidadPiezas"
+                                value={ cantidadPiezas || ""}
+                                onChange={ handleInputChangeArt }/>
+                        </div>
+
                         <div className="col">
                             <input
                                 className="form-control" 

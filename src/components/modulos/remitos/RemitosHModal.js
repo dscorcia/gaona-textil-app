@@ -13,9 +13,10 @@ const customStyles = {
       right                 : 'auto',
       bottom                : 'auto',
       marginRight           : '-50%',
-      height                : 'auto',
-      maxWidth             : '760px',                
-      transform             : 'translate(-50%, -50%)'
+      height                : '82%',
+      maxWidth             : '850px',                
+      transform             : 'translate(-50%, -50%)',
+      overflow: 'scroll'
     }
   };
   Modal.setAppElement('#root');
