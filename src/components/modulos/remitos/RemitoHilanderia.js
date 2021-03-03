@@ -74,9 +74,10 @@ export const RemitoHilanderia = ( {history} ) => {
                                 <td>{ remito.ubicacion }</td>
                                
                                 <td>
-                                    <button className="btn btn-info mr-2" onClick={ ()=> onModifyRemito(remito)}>
+                                    
+                                    <button className="btn btn-info mr-2" hidden onClick={ ()=> onModifyRemito(remito)}>
                                         <i className="fas fa-edit"></i>
-                                    </button>
+                                    </button> 
                                     <button className="btn btn-danger mr-2" onClick={ ()=> onDeleteRemito(remito)}>
                                         <i className="fas fa-trash-alt"></i>
                                     </button>

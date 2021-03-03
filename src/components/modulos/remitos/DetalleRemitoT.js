@@ -39,7 +39,7 @@ export const DetalleRemitoT = () => {
                         <tbody>
                             <tr>
                                 <td> { remitoTintoreria} </td>
-                                <td> { remito.fecha } </td>
+                                <td>{ new Date(remito.fecha).toLocaleDateString() }</td>
                                 <td> { remito.nroPartida } </td>
                                 <td> {
                                     remitoHilanderia.map( (remito, i) =>{

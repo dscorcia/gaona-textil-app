@@ -80,7 +80,7 @@ export const Stock = ( {history} ) => {
                                 <td>{ stock.cantidadPiezasNegocio }</td>
                                 <td>{ stock.empresa }</td>
                                 <td>
-                                    <button className="btn btn-info mr-2" onClick={ ()=> onModifyStock(stock)}>
+                                    <button className="btn btn-info mr-2" hidden onClick={ ()=> onModifyStock(stock)}>
                                         <i className="fas fa-edit"></i>
                                     </button>
                                     <button className="btn btn-danger mr-2" onClick={ ()=> onDeleteStock(stock)}>

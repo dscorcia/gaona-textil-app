@@ -72,7 +72,7 @@ export const SolicitudTintoreria = ( {history} ) => {
                                 <td>{ new Date(solicitud.fecha).toLocaleDateString() }</td>
                                
                                 <td>
-                                    <button className="btn btn-info mr-2" onClick={ ()=> onModifySol(solicitud)}>
+                                    <button className="btn btn-info mr-2"  hidden onClick={ ()=> onModifySol(solicitud)}>
                                         <i className="fas fa-edit"></i>
                                     </button>
                                     <button className="btn btn-danger mr-2" onClick={ ()=> onDeleteSol(solicitud)}>
